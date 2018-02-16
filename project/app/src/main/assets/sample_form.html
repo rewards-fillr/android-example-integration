@@ -1,0 +1,204 @@
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+        <title>
+            Fillr Sample Form
+        </title>
+        <style>
+            body {
+                margin: 20px;
+                width: 420px;
+            }
+            form {
+                width: 380px;
+            }
+            label {
+                min-width: 140px;
+                display: inline-block;
+            }
+            input {
+                width: 190px;
+            }
+            input[type=number] {
+                width: 40px;
+            }
+            input.submitButton {
+                width: auto;
+                padding: 10px;
+                margin-left: 2px;
+                margin-top: 10px;
+            }
+            fieldset {
+                margin-bottom: 10px;
+            }
+            .field {
+                padding-bottom: 2px;
+            }
+
+        </style>
+    </head>
+    <body>
+        <h5>Example Form</h5>
+        <form action="#" method="post" id="exampleForm" onsubmit="alert('You filled in every field.  Amazing!'); return false;">
+            <fieldset>
+                <legend>Account</legend>
+                <div class="field">
+                    <label for="email">Email</label>
+                    <input type="text" required="required" id="email" name="userEmail" placeholder="user@example.com" />
+                </div>
+                <div class="field">
+                    <label for="pass">Password</label>
+                    <input type="password" required="required" id="pass" name="password" placeholder="pass" />
+                </div>
+                <div class="field">
+                    <label for="conf">Confirm Password</label>
+                    <input type="password" required="required" id="conf" name="passConfirm" placeholder="confirm" />
+                </div>
+            </fieldset>
+            <fieldset>
+                <legend>Personal Details</legend>
+                <div class="field">
+                    <label for="title">Salutation</label>
+                    <select id="title" name="salutation" required="required">
+                        <option value="-1">(please choose)</option>
+                        <option value="mr">Mr.</option>
+                        <option value="ms">Ms.</option>
+                        <option value="mrs">Mrs.</option>
+                        <option value="dr">Dr.</option>
+                    </select>
+                </div>
+                <div class="field">
+                    <label for="name1">First Name</label>
+                    <input type="text" required="required" id="name1" name="firstName" placeholder="first name" />
+                </div>
+                <div class="field">
+                    <label for="name2">Last Name</label>
+                    <input type="text" required="required" id="name2" name="lastName" placeholder="last name" />
+                </div>
+                <div class="field">
+                    <label for="dob">Birthdate</label>
+                    <select id="dob" name="dob_day" required="required">
+                        <option value="-1">(day)</option>
+                    </select>
+                    <select name="dob_month" required="required">
+                        <option value="-1">(month)</option>
+                        <option value="1">January</option>
+                        <option value="2">February</option>
+                        <option value="3">March</option>
+                        <option value="4">April</option>
+                        <option value="5">May</option>
+                        <option value="6">June</option>
+                        <option value="7">July</option>
+                        <option value="8">August</option>
+                        <option value="9">Semtember</option>
+                        <option value="10">October</option>
+                        <option value="11">November</option>
+                        <option value="12">December</option>
+                    </select>
+                    <input type="number" name="dob_year" min="1900" max="2018" required="true" placeholder="year" step="1">
+                </div>
+                <div class="field">
+                    <label for="gender">Gender</label>
+                    <select id="gender" name="gender" required="required">
+                        <option value="-1">(gender)</option>
+                        <option value="f">Female</option>
+                        <option value="m">Male</option>
+                        <option value="x">Other</option>
+                        <option value="o">Prefer not to say</option>
+                    </select>
+                </div>
+            </fieldset>
+            <fieldset>
+                <legend>Address</legend>
+                <div class="field">
+                    <label for="street">Street Address</label>
+                    <input type="text" required="required" id="street" name="street1" placeholder="line 1" />
+                </div>
+                <div class="field">
+                    <label>&nbsp;</label>
+                    <input type="text" name="street2" placeholder="line 2" />
+                </div>
+                <div class="field">
+                    <label for="city">City</label>
+                    <input type="text" required="required" id="city" name="suburb" placeholder="city/suburb" />
+                </div>
+                <div class="field">
+                    <label for="state">State</label>
+                    <select id="state" name="locality">
+                        <option value="-1">(please choose)</option>
+                        <option value="ACT">Australian Capital Territory</option>
+                        <option value="NSW">New South Wales</option>
+                        <option value="NT">Northern Territory</option>
+                        <option value="QLD">Queensland</option>
+                        <option value="SA">South Australia</option>
+                        <option value="TAS">Tasmania</option>
+                        <option value="VIC">Victoria</option>
+                        <option value="WA">Western Australia</option>
+
+                    </select>
+                </div>
+                <div class="field">
+                    <label for="postcode">Postcode</label>
+                    <input type="number" required="required" id="postcode" name="zip" step="1" />
+                </div>
+                <div class="field">
+                    <label for="country">Country</label>
+                    <input type="text" readonly="readonly" required="required" id="country" name="country" value="Australia" />
+                </div>
+            </fieldset>
+            <fieldset>
+                <legend>Credit Card</legend>
+                <div class="field">
+                    <label for="ccType">Card Type</label>
+                    <select id="ccType" name="cardType">
+                        <option value="-1">(please choose)</option>
+                        <option value="amex">American Express</option>
+                        <option value="discover">Discover</option>
+                        <option value="mastercard">Mastercard</option>
+                        <option value="visa">Visa</option>
+                    </select>
+                </div>
+                <div class="field">
+                    <label for="ccName">Name on Card</label>
+                    <input type="text" required="required" id="ccName" name="cardName" placeholder="name" />
+                </div>
+                <div class="field">
+                    <label for="ccNum">Card Number</label>
+                    <input type="text" required="required" id="ccNum" name="cardNum" placeholder="e.g. 5163 xxxx xxxx xxxx" />
+                </div>
+                <div class="field">
+                    <label for="ccExp">Expiration Date</label>
+                    <select id="ccExp" name="cardMonth" required="required">
+                        <option value="-1">(month)</option>
+                        <option value="1">January</option>
+                        <option value="2">February</option>
+                        <option value="3">March</option>
+                        <option value="4">April</option>
+                        <option value="5">May</option>
+                        <option value="6">June</option>
+                        <option value="7">July</option>
+                        <option value="8">August</option>
+                        <option value="9">Semtember</option>
+                        <option value="10">October</option>
+                        <option value="11">November</option>
+                        <option value="12">December</option>
+                    </select>
+                    <input type="number" name="cardYear" min="2018" required="true" placeholder="year" step="1">
+                </div>
+                <div class="field">
+                    <label for="ccCode">CVV Code</label>
+                    <input type="number" required="required" id="ccCode" name="cardCvv" placeholder="cvv" />
+                </div>
+            </fieldset>
+
+            <input type="Submit" class="submitButton" />
+        </form>
+        <script>
+            var daySelect = document.getElementById("dob");
+            for (var day = 1; day <= 31; day++) {
+                var option = '<option value="' + day + '>' + day + '</option>';
+                daySelect.innerHTML += option;
+            }
+        </scripts>
+    </body>
+</html>
