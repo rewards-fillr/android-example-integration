@@ -55,17 +55,18 @@ public class ExampleWebViewHeadlessActivity extends AppCompatActivity {
      * @see <a href="https://developer.fillr.com">Developer Center</a>
      */
     private void setupFillr(WebView webView) {
+        //For step 1 look in the com.fillr.FillrApplication
         fillr = Fillr.getInstance();
-        //Step 1. Initialize Fillr with the necessary keys.
+        //Step 2. Initialize Fillr with the necessary keys.
         fillr.initialise(FILLR_KEY, FILLR_SECRET, this, Fillr.BROWSER_TYPE.WEB_KIT);
-        //Step 2. Set the FillMode. We support two different modes headless and headful.
+        //Step 3. Set the FillMode. We support two different modes headless and headful.
         fillr.setFillMode(Fillr.FillMode.HEADLESS);
-        //Step 3. Set the data provider. This is called when,
+        //Step 4. Set the data provider. This is called when,
         //  - The form in question mutates
         //  - When the page finishes loading.
         fillr.profileDataListener(profileDataListener);
 
-        //Step 4. Track the WebView - This can be called as many times as needed. The WebViews are stored as weak references.
+        //Step 5. Track the WebView - This can be called as many times as needed. The WebViews are stored as weak references.
         fillr.trackWebView(webView);
     }
 
@@ -84,6 +85,7 @@ public class ExampleWebViewHeadlessActivity extends AppCompatActivity {
             //get the form fields
             List<String> fields = mapping.getFields();
             if (webView != null && webView.getWebViewObject() instanceof WebView) {
+                //we can get a reference to the underlying tracked WebView.
                 WebView trackedWebViewObject = (WebView) webView.getWebViewObject();
             }
 
@@ -99,7 +101,7 @@ public class ExampleWebViewHeadlessActivity extends AppCompatActivity {
 
     /**
      * @param webView the WebView attached to the
-     *                {@link android.webkit.WebViewClient#onPageFinished(WebView, String)} onPageFinished} method.
+     * {@link android.webkit.WebViewClient#onPageFinished(WebView, String)} onPageFinished} method.
      */
     private void fillrOnPageFinishedListener(WebView webView) {
         fillr.onPageFinished(webView);

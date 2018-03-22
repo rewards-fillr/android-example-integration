@@ -104,6 +104,4 @@ public class ExampleWebViewHeadfulActivity extends AppCompatActivity {
                 return super.onOptionsItemSelected(item);
         }
     }
-
-
 }
