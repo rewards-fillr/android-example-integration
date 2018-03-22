@@ -17,14 +17,14 @@
             android:id="@+id/btnHeadful"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/headful_mode" />
+            android:text="@string/btn_headful_mode" />
 
         <android.support.v7.widget.AppCompatButton
             android:id="@+id/btnHeadless"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:text="@string/headless_mode" />
+            android:text="@string/btn_headless_mode" />
     </LinearLayout>
 
 </RelativeLayout>

@@ -17,7 +17,9 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".activity.ExampleWebViewHeadfulActivity">
+        <activity
+            android:name=".activity.ExampleWebViewHeadfulActivity"
+            android:label="@string/headful">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".activity.MainActivity" />
@@ -27,7 +29,9 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".activity.ExampleWebViewHeadlessActivity">
+        <activity
+            android:name=".activity.ExampleWebViewHeadlessActivity"
+            android:label="@string/headless">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".activity.MainActivity" />

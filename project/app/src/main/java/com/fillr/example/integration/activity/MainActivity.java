@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 startActivity(new Intent(this, ExampleWebViewHeadfulActivity.class));
                 break;
             case R.id.btnHeadless:
-                startActivity(new Intent(this, ExampleWebViewHeadfulActivity.class));
+                startActivity(new Intent(this, ExampleWebViewHeadlessActivity.class));
                 break;
         }
     }
