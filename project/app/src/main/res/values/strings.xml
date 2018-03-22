@@ -4,4 +4,8 @@
     <string name="fillr_settings">Fillr Settings</string>
     <string name="fillr_about_app">Fillr Example Android Integration App\n\n\n© Fillr 2018</string>
     <string name="ok">Okay</string>
+
+    <string name="headful_mode">WITH PROFILE MANAGEMENT - HEADFUL MODE</string>
+    <string name="headless_mode">WITHOUT UI OR PROFILE MANAGEMENT - HEADLESS MODE</string>
+
 </resources>
