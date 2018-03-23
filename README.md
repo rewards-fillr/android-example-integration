@@ -227,37 +227,29 @@ Fillr supports either *Headful* or *Headless mode*. The following code segments 
                 @Override
                 public void onPageFinished(WebView view, String url) {
                     super.onPageFinished(view, url);
-                    fillrOnPageFinishedListener(view);
+                    fillr.onPageFinished(webView);
                 }
             });
         ```
 
-    * Assign a data provider which would be called when a form is detected or if a form is mutated,
+    * Assign a data provider which would be called when a form is detected or if a form is mutated. We then map the data to the relevant namespace.
+      For a list of all the available namespaces; look [here](#profile-data-namespace-list).
         ```java
             fillr.profileDataListener(new Fillr.FillrProfileDataListener() {
             @Override
                 public void onFormDetected(FillrWebView fillrWebView, FillrMapping fillrMapping) {
-                }
-            });
-        ```
-    * We then map the data to the relevant namespace. For a list of all the available namespaces; look [here](#profile-data-namespace-list).
-        ```java
-            fillr.profileDataListener(new Fillr.FillrProfileDataListener() {
-            @Override
-                public void onFormDetected(FillrWebView fillrWebView, FillrMapping fillrMapping) {
-                    //set the profile data    
-                    HashMap<String, String> profileData = new HashMap<>();
-                    profileData.put("PersonalDetails.Honorific", "Mr.");
-                    profileData.put("PersonalDetails.FirstName", "John");
+                     HashMap<String, String> profileData = new HashMap<>();
+                     profileData.put("PersonalDetails.Honorific", "Mr.");
+                     profileData.put("PersonalDetails.FirstName", "John");
 
-                    //set the mapped profile data into the FillrMapping object. 
-                    fillrMapping.setProfileData(profileData);
-                    //load the data into the WebView fields
+                     //set the mapped profile data into the FillrMapping object.
+                     fillrMapping.setProfileData(profileData);
+
+                     //load the data into the WebView fields
                     fillr.performAutofillOnWebView(webView, mapping);
                 }
             });
         ```
-    
 
 ### Profile Data Namespace List
 
