@@ -1,9 +1,3 @@
----
-layout: square
-title: Android Example Integration
-excerpt: A minimal working example project demonstrating how to integrate with the Fillr Embedded SDK on Android.
----
-
 ### Overview
 
 This example project demonstrates a minimal integration with the Fillr Embedded SDK on Android, highlighting the configuration and coding changes necessary for a successful integration with a new or preexisting Android application.  
@@ -36,16 +30,16 @@ Before getting started, please ensure you have the following:
     
 2.  Now open the project in Android Studio (using 'File -> Open...').  
 
-3.  Open the `ExampleWebViewActivity` class (inside of the `com.fillr.example.integration.activity` package) and find the lines near the top of the file that say:
+3.  Open the `ExampleWebViewHeadfulActivity` class (inside of the `com.fillr.example.integration.activity` package) and find the lines near the top of the file that say:
 
     ```java
-    //TODO:  place your Fillr development key and secret values here
-    //       you can acquire a key/secret pair at https://developer.fillr.com
+    //Place your Fillr development key and secret values here
+    //You can acquire a key/secret pair at https://developer.fillr.com
     private static final String FILLR_KEY = "YOUR_FILLR_DEVELOPER_KEY";
     private static final String FILLR_SECRET = "YOUR_FILLR_SECRET_KEY";
     ```
     
-    Insert ther API/Secret key pair you got from the [Fillr Developer Portal](https://developer.fillr.com/users/sign_up) here and save the file.
+    Insert your API/Secret key pair you got from the [Fillr Developer Portal](https://developer.fillr.com/users/sign_up) here and save the file.
 
 4.  Now select 'Run -> Run app' in Android Studio to launch the app on the Android Simulator or your native Android device.  
 
@@ -64,22 +58,27 @@ To set up your own Android project to use the Fillr Embedded SDK, you'll need to
 
     ```gradle
     //Fillr dependencies
-    implementation(group: 'com.fillr', name: 'fillrcore', version: '4.5.0', ext: 'aar', classifier: 'fillrEmbeddedRelease') {
+    implementation(group: 'com.fillr', name: 'fillrcore', version: '4.6.7', ext: 'aar', classifier: 'fillrEmbeddedRelease') {
         transitive true
     }
-    implementation(group: 'com.fillr', name: 'fillr-browser-sdk', version: '3.3.0', ext: 'aar', classifier: 'release')
-    implementation(group: 'com.fillr', name: 'fillr-analytics', version: '1.2.0', ext: 'aar', classifier: 'release')
+    implementation(group: 'com.fillr', name: 'fillr-browser-sdk', version: '3.4.4', ext: 'aar', classifier: 'release')
+    implementation(group: 'com.fillr', name: 'fillr-analytics', version: '1.2.3', ext: 'aar', classifier: 'release')
     ```
     
 2.  Press the 'Sync Now' option that appears in the upper-right corner of Android Studio and wait for the Sync to complete.  This will download the Fillr SDK and add it to your project's classpath.
 
 
-### Code Walkthrough - Implementation
+### Code Walkthrough (Standard Implementation)
 
 Once you've completed the setup steps above you're ready to start integrating Fillr into your application's code!  Follow the steps below for a quick and easy integratrion:
 
-1.  In your app's root activity, make the following changes:
+1. In your app's Application class, make the following changes:
+    ```java
+    FillrApplication app = FillrApplication.getInstance(this);
+    app.init();
+    ```
 
+2.  In your app's root activity, make the following changes:
     * Add a `Fillr` instance variable:
         ```java
         private Fillr fillr;  //or 'mFillr' if you like variables that start with 'm'
@@ -90,7 +89,6 @@ Once you've completed the setup steps above you're ready to start integrating Fi
         fillr = Fillr.getInstance();
         fillr.initialise("Your Fillr Key", "Your Fillr Secret", this, Fillr.BROWSER_TYPE.WEB_KIT);
         ```
-        
     * Give Fillr a reference to your `WebView`:
         ```java
         //Note that this must be called prior to calling loadUrl() on the WebView.
@@ -122,7 +120,7 @@ Once you've completed the setup steps above you're ready to start integrating Fi
         startActivity(new Intent(this, FEMainActivity.class));
         ```
         
-2.  Display a Fillr Toolbar.  There are different ways to accomplish this depending upon your requirements and the desired UX.  For a successful integration, you'll want to complete (at least) one of the following:
+3.  Display a Fillr Toolbar.  There are different ways to accomplish this depending upon your requirements and the desired UX.  For a successful integration, you'll want to complete (at least) one of the following:
 
     * **Option 1** - Add a `FillrToolbarView` to the layout that includes your `WebView` by including the following in the layout's `xml`:
         ```xml
@@ -188,6 +186,121 @@ Once you've completed the setup steps above you're ready to start integrating Fi
             }
         });
         ```
+
+### Code Walkthrough (Headless Implementation)
+
+Fillr supports either *Headful* or *Headless mode*. The following code segments detail Headless Mode Integration,
+
+1. In your apps [Application](https://developer.android.com/reference/android/app/Application.html) class, make the following changes in your [onCreate](https://developer.android.com/reference/android/app/Application.html#onCreate()) method:
+```java
+          FillrApplication app = FillrApplication.getInstance(this);
+          app.init();
+```
+
+2. Next in your app's Activity or Fragment, make the following changes:
+
+    * Add a `Fillr` instance variable:
+        ```java
+            private Fillr fillr;  //or 'mFillr' if you like variables that start with 'm'
+        ```
+    * Instantiate and initialise Fillr:
+        ```java
+            //Fillr autofill setup
+            fillr = Fillr.getInstance();
+            fillr.initialise("Your Fillr Key", "Your Fillr Secret", this, Fillr.BROWSER_TYPE.WEB_KIT);
+        ```
+    * Assign the Fill mode as Headless:
+        ```java
+            fillr.setFillMode(Fillr.FillMode.HEADLESS);
+        ```
+
+    * Give Fillr a reference to your [WebView](https://developer.android.com/reference/android/webkit/WebView.html):
+        ```java
+            //Note that this must be called prior to calling loadUrl() on the WebView.
+            //If you have multiple WebView instances, repeat this step for each one.
+            fillr.trackWebView(yourWebView);
+        ``` 
+
+    * Call the [onPageFinished](https://developer.android.com/reference/android/webkit/WebViewClient.html#onPageFinished) of your webview. 
+        ```java
+            webView.setWebViewClient(new WebViewClient() {
+                @Override
+                public void onPageFinished(WebView view, String url) {
+                    super.onPageFinished(view, url);
+                    fillrOnPageFinishedListener(view);
+                }
+            });
+        ```
+
+    * Assign a data provider which would be called when a form is detected or if a form is mutated,
+        ```java
+            fillr.profileDataListener(new Fillr.FillrProfileDataListener() {
+            @Override
+                public void onFormDetected(FillrWebView fillrWebView, FillrMapping fillrMapping) {
+                }
+            });
+        ```
+    * We then map the data to the relevant namespace. For a list of all the available namespaces; look [here](#profile-data-namespace-list).
+        ```java
+            fillr.profileDataListener(new Fillr.FillrProfileDataListener() {
+            @Override
+                public void onFormDetected(FillrWebView fillrWebView, FillrMapping fillrMapping) {
+                    //set the profile data    
+                    HashMap<String, String> profileData = new HashMap<>();
+                    profileData.put("PersonalDetails.Honorific", "Mr.");
+                    profileData.put("PersonalDetails.FirstName", "John");
+
+                    //set the mapped profile data into the FillrMapping object. 
+                    fillrMapping.setProfileData(profileData);
+                    //load the data into the WebView fields
+                    fillr.performAutofillOnWebView(webView, mapping);
+                }
+            });
+        ```
+    
+
+### Profile Data Namespace List
+
+```xml
+PersonalDetails.Honorific
+PersonalDetails.FirstName
+PersonalDetails.LastName
+
+Passwords.Password.Password
+
+PersonalDetails.Gender
+
+PersonalDetails.BirthDate.Day
+PersonalDetails.BirthDate.Month
+PersonalDetails.BirthDate.Year
+
+ContactDetails.CellPhones.CellPhone.Number
+
+ContactDetails.Emails.Email.Address
+
+CreditCards.CreditCard.NameOnCard
+CreditCards.CreditCard.Number
+CreditCards.CreditCard.Type
+CreditCards.CreditCard.Expiry.Month
+CreditCards.CreditCard.Expiry.Year
+CreditCards.CreditCard.CCV
+
+AddressDetails.HomeAddress.AddressLine1
+AddressDetails.HomeAddress.Suburb
+AddressDetails.HomeAddress.PostalCode
+AddressDetails.HomeAddress.AdministrativeArea
+
+AddressDetails.BillingAddress.AddressLine1
+AddressDetails.BillingAddress.Suburb
+AddressDetails.BillingAddress.PostalCode
+AddressDetails.BillingAddress.AdministrativeArea
+
+AddressDetails.PostalAddress.AddressLine1
+AddressDetails.PostalAddress.Suburb
+AddressDetails.PostalAddress.PostalCode
+AddressDetails.PostalAddress.AdministrativeArea
+```
+
 
 
 ### Further Resources

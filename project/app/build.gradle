@@ -6,7 +6,7 @@ android {
         versionCode 1
         versionName "1.0"
         applicationId "com.fillr.example.integration"
-        minSdkVersion 15
+        minSdkVersion 16
         targetSdkVersion 27
     }
     buildTypes {
@@ -23,9 +23,9 @@ dependencies {
     implementation 'com.android.support.constraint:constraint-layout:1.0.2'
 
     //Fillr dependencies
-    implementation(group: 'com.fillr', name: 'fillrcore', version: '4.5.0', ext: 'aar', classifier: 'fillrEmbeddedRelease') {
+    implementation(group: 'com.fillr', name: 'fillrcore', version: '4.6.7', ext: 'aar', classifier: 'fillrEmbeddedRelease') {
         transitive true
     }
-    implementation(group: 'com.fillr', name: 'fillr-browser-sdk', version: '3.3.0', ext: 'aar', classifier: 'release')
-    implementation(group: 'com.fillr', name: 'fillr-analytics', version: '1.2.0', ext: 'aar', classifier: 'release')
+    implementation(group: 'com.fillr', name: 'fillr-browser-sdk', version: '3.4.4', ext: 'aar', classifier: 'release')
+    implementation(group: 'com.fillr', name: 'fillr-analytics', version: '1.2.3', ext: 'aar', classifier: 'release')
 }
