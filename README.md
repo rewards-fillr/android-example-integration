@@ -44,11 +44,17 @@ Before getting started, please ensure you have the following:
 4.  Now select 'Run -> Run app' in Android Studio to launch the app on the Android Simulator or your native Android device.  
 
 5.  You'll see a screen that looks like:
-
-    ![Fillr Android Example Screenshot](https://github.com/Fillr/android-example-integration/raw/master/pictures/demo_app_screenshot.png)
+    * Menu
+    ![Fillr Android Example Screenshot](https://github.com/Fillr/android-example-integration/raw/master/pictures/demo_app_menu.png)
 
     Congrats, the Fillr Example App is now running!
 
+    We support two modes either,
+
+    * Headful Mode
+        ![Fillr Android Example Screenshot](https://github.com/Fillr/android-example-integration/raw/master/pictures/demo_app_screenshot.png)
+    * Headless Mode
+        ![Fillr Android Example Screenshot](https://github.com/Fillr/android-example-integration/raw/master/pictures/demo_app_headless_screenshot.png)
 
 ### Code Walkthrough - Setup
 

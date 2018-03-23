@@ -8,6 +8,7 @@ android {
         applicationId "com.fillr.example.integration"
         minSdkVersion 16
         targetSdkVersion 27
+        multiDexEnabled true
     }
     buildTypes {
         release {
@@ -28,4 +29,6 @@ dependencies {
     }
     implementation(group: 'com.fillr', name: 'fillr-browser-sdk', version: '3.4.4', ext: 'aar', classifier: 'release')
     implementation(group: 'com.fillr', name: 'fillr-analytics', version: '1.2.3', ext: 'aar', classifier: 'release')
+    implementation 'com.android.support:multidex:1.0.3'
+
 }
