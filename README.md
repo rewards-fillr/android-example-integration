@@ -193,8 +193,8 @@ Fillr supports either *Headful* or *Headless mode*. The following code segments 
 
 1. In your apps [Application](https://developer.android.com/reference/android/app/Application.html) class, make the following changes in your [onCreate](https://developer.android.com/reference/android/app/Application.html#onCreate()) method:
 ```java
-            FillrApplication init = FillrApplication.getInstance(this);
-            init.init();
+          FillrApplication app = FillrApplication.getInstance(this);
+          app.init();
 ```
 
 2. Next in your app's Activity or Fragment, make the following changes:
