@@ -20,7 +20,7 @@ import com.fillr.example.integration.R;
  * Tapping on a field in the form will bring up a toolbar option to 'Autofill
  * this form', which when tapped will launch Fillr and autofill the form.
  */
-public class ExampleWebViewActivity extends AppCompatActivity {
+public class ExampleWebViewHeadfulActivity extends AppCompatActivity {
     //TODO:  place your Fillr development key and secret values here
     //       you can acquire a key/secret pair at https://developer.fillr.com
     private static final String FILLR_KEY = "YOUR_FILLR_DEVELOPER_KEY";
@@ -32,7 +32,7 @@ public class ExampleWebViewActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_example_web_view);
+        setContentView(R.layout.activity_example_headful_webview);
         webView = findViewById(R.id.webview);
         webView.getSettings().setSupportZoom(false);
         webView.setWebChromeClient(new WebChromeClient());

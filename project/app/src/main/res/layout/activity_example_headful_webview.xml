@@ -3,7 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.fillr.example.integration.activity.ExampleWebViewActivity">
+    tools:context="com.fillr.example.integration.activity.ExampleWebViewHeadfulActivity">
+
     <WebView
         android:id="@+id/webview"
         android:layout_width="match_parent"
@@ -11,10 +12,10 @@
 
     <!-- Fillr Toolbar, will automatically display if/when the user starts typing in a fillable field -->
     <com.fillr.browsersdk.FillrToolbarView
-        android:layout_marginBottom="0dp"
         android:id="@+id/fillrtoolbarview"
         android:layout_width="fill_parent"
         android:layout_height="50dp"
         android:layout_alignParentBottom="true"
-        android:visibility="invisible"/>
+        android:layout_marginBottom="0dp"
+        android:visibility="invisible" />
 </RelativeLayout>
