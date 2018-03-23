@@ -192,11 +192,10 @@ Once you've completed the setup steps above you're ready to start integrating Fi
 Fillr supports either *Headful* or *Headless mode*. The following code segments detail Headless Mode Integration,
 
 1. In your apps [Application](https://developer.android.com/reference/android/app/Application.html) class, make the following changes in your [onCreate](https://developer.android.com/reference/android/app/Application.html#onCreate()) method:
-
-        ```java
+```java
             FillrApplication init = FillrApplication.getInstance(this);
             init.init();
-        ```
+```
 
 2. Next in your app's Activity or Fragment, make the following changes:
 
@@ -226,7 +225,7 @@ Fillr supports either *Headful* or *Headless mode*. The following code segments 
             fillr.trackWebView(yourWebView);
         ``` 
 
-    * Call the [onPageFinished](https://developer.android.com/reference/android/webkit/WebViewClient.html#onPageFinished(android.webkit.WebView,%20java.lang.String)) of your webview. 
+    * Call the [onPageFinished](https://developer.android.com/reference/android/webkit/WebViewClient.html#onPageFinished) of your webview. 
         ```java
             webView.setWebViewClient(new WebViewClient() {
                 @Override
