@@ -45,7 +45,7 @@ Before getting started, please ensure you have the following:
 
 5.  You'll see a screen that looks like:
 
-    ![Fillr Android Example Screenshot](https://github.com/Fillr/android-example-integration.git/raw/master/images/demo_app_screenshot.png)
+    ![Fillr Android Example Screenshot](https://github.com/Fillr/android-example-integration/raw/master/pictures/demo_app_screenshot.png)
 
     Congrats, the Fillr Example App is now running!
 
