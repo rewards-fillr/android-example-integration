@@ -52,9 +52,9 @@ Before getting started, please ensure you have the following:
     We support two modes either,
 
     * Headful Mode
-        ![Fillr Android Example Screenshot](https://github.com/Fillr/android-example-integration/raw/master/pictures/demo_app_screenshot.png)
+        ![Headful Mode Screenshot](https://github.com/Fillr/android-example-integration/raw/master/pictures/demo_app_screenshot.png)
     * Headless Mode
-        ![Fillr Android Example Screenshot](https://github.com/Fillr/android-example-integration/raw/master/pictures/demo_app_headless_screenshot.png)
+        ![Headless Mode Screenshot](https://github.com/Fillr/android-example-integration/raw/master/pictures/demo_app_headless_screenshot.png)
 
 ### Code Walkthrough - Setup
 
