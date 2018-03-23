@@ -213,10 +213,6 @@ Fillr supports either *Headful* or *Headless mode*. The following code segments 
         ```java
             fillr.setFillMode(Fillr.FillMode.HEADLESS);
         ```
-    * Assign the Fill mode as Headless:
-            ```java
-                fillr.setFillMode(Fillr.FillMode.HEADLESS);
-            ```
 
     * Give Fillr a reference to your [WebView](https://developer.android.com/reference/android/webkit/WebView.html):
         ```java
