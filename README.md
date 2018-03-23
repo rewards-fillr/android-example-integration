@@ -74,8 +74,8 @@ Once you've completed the setup steps above you're ready to start integrating Fi
 
 1. In your app's Application class, make the following changes:
     ```java
-    FillrApplication init = FillrApplication.getInstance(this);
-    init.init();
+    FillrApplication app = FillrApplication.getInstance(this);
+    app.init();
     ```
 
 2.  In your app's root activity, make the following changes:

@@ -10,7 +10,7 @@ public class FillrTestApp extends Application {
     public void onCreate() {
         super.onCreate();
         //Step 1 - Initialize Fillr Application
-        FillrApplication init = FillrApplication.getInstance(this);
-        init.init();
+        FillrApplication app = FillrApplication.getInstance(this);
+        app.init();
     }
 }
