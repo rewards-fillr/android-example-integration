@@ -8,6 +8,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.webkit.WebChromeClient;
 import android.webkit.WebView;
+import android.webkit.WebViewClient;
 
 import com.fillr.browsersdk.Fillr;
 import com.fillr.embedded.profile.FEMainActivity;
@@ -35,7 +36,13 @@ public class ExampleWebViewHeadfulActivity extends AppCompatActivity {
         setContentView(R.layout.activity_example_headful_webview);
         webView = findViewById(R.id.webview);
         webView.getSettings().setSupportZoom(false);
-        webView.setWebChromeClient(new WebChromeClient());
+        webView.setWebViewClient(new WebViewClient() {
+            @Override
+            public void onPageFinished(WebView view, String url) {
+                super.onPageFinished(view, url);
+                fillrOnPageFinishedListener(view);
+            }
+        });
 
         //Fillr autofill setup
         fillr = Fillr.getInstance();
@@ -78,6 +85,14 @@ public class ExampleWebViewHeadfulActivity extends AppCompatActivity {
         if (requestCode == Fillr.FILLR_REQUEST_CODE && resultCode == RESULT_OK) {
             fillr.processForm(intent);
         }
+    }
+
+    /**
+     * @param webView the WebView attached to the
+     * {@link android.webkit.WebViewClient#onPageFinished(WebView, String)} onPageFinished} method.
+     */
+    private void fillrOnPageFinishedListener(WebView webView) {
+        fillr.onPageFinished(webView);
     }
 
     @Override
