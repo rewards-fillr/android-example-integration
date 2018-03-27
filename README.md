@@ -262,19 +262,8 @@ Fillr supports either *Headful* or *Headless mode*. The following code segments 
     ```
     Error:Execution failed for task ':app:transformDexArchiveWithExternalLibsDexMergerForDebug'...
     ```
-    
-    To fix this, edit your module's `build.gradle` file and ensure that under `android/defaultConfig` you have set `multiDexEnabled` to `true`, as in:
-    
-    ```gradle
-    android {
-        compileSdkVersion 27
-        defaultConfig {
-            minSdkVersion 16
-            targetSdkVersion 27
-            multiDexEnabled true
-        }
-    }
-    ```
+
+Follow this guide, https://developer.android.com/studio/build/multidex.html
 
 ### Profile Data Namespace List
 
