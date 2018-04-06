@@ -230,7 +230,7 @@ Fillr supports either *Headful* or *Headless mode*. The following code segments 
         ```java
             webView.setWebViewClient(new FillrWebViewClient());
         ```
-    Or Call the [onPageFinished](https://developer.android.com/reference/android/webkit/WebViewClient.html#onPageFinished) and the [shouldInterceptRequest](https://developer.android.com/reference/android/webkit/WebViewClient.html#shouldInterceptRequest) of your webview:
+    * Or instead of setting the FillrWebviewClient, call the [onPageFinished](https://developer.android.com/reference/android/webkit/WebViewClient.html#onPageFinished) and the [shouldInterceptRequest](https://developer.android.com/reference/android/webkit/WebViewClient.html#shouldInterceptRequest) of your webview:
 
         ```java
             webView.setWebViewClient(new WebViewClient() {
