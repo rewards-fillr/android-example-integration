@@ -226,13 +226,26 @@ Fillr supports either *Headful* or *Headless mode*. The following code segments 
             fillr.trackWebView(yourWebView);
         ``` 
 
-    * Call the [onPageFinished](https://developer.android.com/reference/android/webkit/WebViewClient.html#onPageFinished) of your webview. 
+    * Assign the FillrWebviewClient as your [WebViewClient](https://developer.android.com/reference/android/webkit/WebViewClient.html):
+        ```java
+            webView.setWebViewClient(new FillrWebViewClient());
+        ```
+    Or Call the [onPageFinished](https://developer.android.com/reference/android/webkit/WebViewClient.html#onPageFinished) and the [shouldInterceptRequest](https://developer.android.com/reference/android/webkit/WebViewClient.html#shouldInterceptRequest) of your webview:
+
         ```java
             webView.setWebViewClient(new WebViewClient() {
                 @Override
                 public void onPageFinished(WebView view, String url) {
                     super.onPageFinished(view, url);
                     fillr.onPageFinished(webView);
+                }
+                @Override
+                public WebResourceResponse shouldInterceptRequest (WebView view, WebResourceRequest request) {
+                    ...
+                    
+                    WebResourceResponse response = fillr.shouldInterceptRequest(view, request);
+                    if (response != null) return response;
+                    return super.shouldInterceptRequest(view, request);
                 }
             });
         ```

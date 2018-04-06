@@ -6,11 +6,10 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.webkit.WebChromeClient;
 import android.webkit.WebView;
-import android.webkit.WebViewClient;
 
 import com.fillr.browsersdk.Fillr;
+import com.fillr.browsersdk.model.FillrWebViewClient;
 import com.fillr.embedded.profile.FEMainActivity;
 import com.fillr.example.integration.R;
 
@@ -36,13 +35,7 @@ public class ExampleWebViewHeadfulActivity extends AppCompatActivity {
         setContentView(R.layout.activity_example_headful_webview);
         webView = findViewById(R.id.webview);
         webView.getSettings().setSupportZoom(false);
-        webView.setWebViewClient(new WebViewClient() {
-            @Override
-            public void onPageFinished(WebView view, String url) {
-                super.onPageFinished(view, url);
-                fillrOnPageFinishedListener(view);
-            }
-        });
+        webView.setWebViewClient(new FillrWebViewClient());
 
         //Fillr autofill setup
         fillr = Fillr.getInstance();

@@ -3,11 +3,11 @@ package com.fillr.example.integration.activity;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.webkit.WebView;
-import android.webkit.WebViewClient;
 
 import com.fillr.browsersdk.Fillr;
 import com.fillr.browsersdk.model.FillrMapping;
 import com.fillr.browsersdk.model.FillrWebView;
+import com.fillr.browsersdk.model.FillrWebViewClient;
 import com.fillr.example.integration.R;
 
 import java.util.HashMap;
@@ -35,13 +35,7 @@ public class ExampleWebViewHeadlessActivity extends AppCompatActivity {
 
         setupFillr(webView);
 
-        webView.setWebViewClient(new WebViewClient() {
-            @Override
-            public void onPageFinished(WebView view, String url) {
-                super.onPageFinished(view, url);
-                fillrOnPageFinishedListener(view);
-            }
-        });
+        webView.setWebViewClient(new FillrWebViewClient());
 
         webView.loadUrl("http://www.fillr.com/demo");
     }
