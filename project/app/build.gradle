@@ -22,6 +22,11 @@ android {
     }
 
     buildTypes {
+        debug {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
+        }
         release {
             minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
@@ -36,9 +41,12 @@ dependencies {
     implementation 'com.android.support.constraint:constraint-layout:1.0.2'
     implementation 'com.google.android.gms:play-services-places:11.6.0'
     //Fillr dependencies
-    implementation(group: 'com.fillr', name: 'fillrcore', version: '4.6.11', ext: 'aar', classifier: 'fillrEmbeddedLiteRelease'){
+    implementation(group: 'com.fillr', name: 'fillrcore', version: '4.6.11', ext: 'aar', classifier: 'fillrEmbeddedLiteRelease') {
+        transitive true
+        exclude group: 'com.google.firebase', module: 'firebase-core'
+    }
+    implementation(group: 'com.fillr', name: 'fillr-browser-sdk', version: '3.5.2', ext: 'aar', classifier: 'release') {
         transitive true
     }
-    implementation(group: 'com.fillr', name: 'fillr-browser-sdk', version: '3.5.2', ext: 'aar', classifier: 'release')
     implementation(group: 'com.fillr', name: 'fillr-analytics', version: '1.2.3', ext: 'aar', classifier: 'release')
 }
