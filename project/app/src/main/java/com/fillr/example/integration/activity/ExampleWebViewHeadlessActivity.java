@@ -42,7 +42,6 @@ public class ExampleWebViewHeadlessActivity extends AppCompatActivity {
                 fillrOnPageFinishedListener(view);
             }
         });
-
         webView.loadUrl("http://www.fillr.com/demo");
     }
 
@@ -73,7 +72,7 @@ public class ExampleWebViewHeadlessActivity extends AppCompatActivity {
     /**
      * Since Headless mode needs to provide it's own data, we use a listener.
      */
-    Fillr.FillrProfileDataListener profileDataListener = new Fillr.FillrProfileDataListener() {
+    private Fillr.FillrProfileDataListener profileDataListener = new Fillr.FillrProfileDataListener() {
 
         /**
          * When a form is detected with fields that can be populated,

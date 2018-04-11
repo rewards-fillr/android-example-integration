@@ -1,33 +1,44 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 27
+
+    compileSdkVersion 26
+
     defaultConfig {
         versionCode 1
         versionName "1.0"
         applicationId "com.fillr.example.integration"
         minSdkVersion 16
-        targetSdkVersion 27
+        targetSdkVersion 26
         multiDexEnabled true
     }
+    signingConfigs {
+        release {
+            storeFile rootProject.file('keystore/test_keystore')
+            storePassword '1qaz2wsx'
+            keyAlias 'fillr'
+            keyPassword '1qaz2wsx'
+        }
+    }
+
     buildTypes {
         release {
-            minifyEnabled false
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
         }
     }
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation 'com.android.support:appcompat-v7:27.0.0'
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation 'com.android.support:appcompat-v7:26.1.0'
     implementation 'com.android.support.constraint:constraint-layout:1.0.2'
-
+    implementation 'com.google.android.gms:play-services-places:11.6.0'
     //Fillr dependencies
-    implementation(group: 'com.fillr', name: 'fillrcore', version: '4.6.8', ext: 'aar', classifier: 'fillrEmbeddedRelease') {
+    implementation(group: 'com.fillr', name: 'fillrcore', version: '4.6.10', ext: 'aar', classifier: 'fillrEmbeddedRelease'){
         transitive true
     }
-    implementation(group: 'com.fillr', name: 'fillr-browser-sdk', version: '3.4.7', ext: 'aar', classifier: 'release')
+    implementation(group: 'com.fillr', name: 'fillr-browser-sdk', version: '3.5.2', ext: 'aar', classifier: 'release')
     implementation(group: 'com.fillr', name: 'fillr-analytics', version: '1.2.3', ext: 'aar', classifier: 'release')
-    implementation 'com.android.support:multidex:1.0.3'
 }

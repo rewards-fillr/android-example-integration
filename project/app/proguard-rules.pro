@@ -19,3 +19,35 @@
 # If you keep the line number information, uncomment this to
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
+
+-keep enum org.greenrobot.eventbus.ThreadMode { *; }
+
+-keep class com.fillr.browsersdk.Fillr$JSNativeInterface
+
+-keepclassmembers class * {
+    @android.webkit.JavascriptInterface <methods>;
+}
+
+-keep class com.fillr.browsersdk.Fillr$JSNativeInterface
+-keepclassmembers class com.fillr.browsersdk.Fillr
+-keepclassmembers class com.fillr.browsersdk.Fillr$JSNativeInterface
+-keep public class * implements com.fillr.browsersdk.Fillr$JSNativeInterface
+-keepclassmembers class com.fillr.browsersdk.Fillr$JSNativeInterface {
+    <methods>;
+}
+
+-keep class com.fillr.analytics.**
+-keep interface com.fillr.analytics.**
+
+-keepattributes JavascriptInterface
+-keepattributes *Annotation*
+-keepattributes Signature
+-keepattributes InnerClasses
+-dontwarn rx.**
+-dontwarn com.google.appengine.api.urlfetch.**
+-dontwarn com.google.android.gms.**
+-keepclassmembers class ** {
+ @org.greenrobot.eventbus.Subscribe <methods>;
+}
+-keep enum org.greenrobot.eventbus.ThreadMode { *; }
+-dontwarn org.springframework.**
