@@ -51,3 +51,4 @@
 }
 -keep enum org.greenrobot.eventbus.ThreadMode { *; }
 -dontwarn org.springframework.**
+-dontwarn com.google.common.io.**

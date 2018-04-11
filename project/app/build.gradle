@@ -36,7 +36,7 @@ dependencies {
     implementation 'com.android.support.constraint:constraint-layout:1.0.2'
     implementation 'com.google.android.gms:play-services-places:11.6.0'
     //Fillr dependencies
-    implementation(group: 'com.fillr', name: 'fillrcore', version: '4.6.10', ext: 'aar', classifier: 'fillrEmbeddedRelease'){
+    implementation(group: 'com.fillr', name: 'fillrcore', version: '4.6.11', ext: 'aar', classifier: 'fillrEmbeddedLiteRelease'){
         transitive true
     }
     implementation(group: 'com.fillr', name: 'fillr-browser-sdk', version: '3.5.2', ext: 'aar', classifier: 'release')
