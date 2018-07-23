@@ -9,7 +9,7 @@ The code and this project (and highlighted below) can be used as a roadmap when 
 
 Before getting started, please ensure you have the following:
 
-1.  A Fillr API/Secret key pair.  This can be acquired from the [Fillr Developer Portal](https://developer.fillr.com/users/sign_up).
+1.  A Fillr API/Secret key pair.  [Contact us](mailto:ct@fillr.com) to get an API/Secrey key pair.
 2.  An up-to-date copy of [Android Studio](https://developer.android.com/studio/index.html) with SDK Level 27 (Oreo 8.1) installed.
 3.  A simulator [configured in AVD](https://developer.android.com/studio/run/managing-avds.html#createavd) or a native Android device to run the example on.
 
