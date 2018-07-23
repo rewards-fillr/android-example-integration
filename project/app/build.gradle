@@ -2,14 +2,14 @@ apply plugin: 'com.android.application'
 
 android {
 
-    compileSdkVersion 26
+    compileSdkVersion 27
 
     defaultConfig {
         versionCode 1
         versionName "1.0"
         applicationId "com.fillr.example.integration"
         minSdkVersion 16
-        targetSdkVersion 26
+        targetSdkVersion 27
         multiDexEnabled true
     }
     signingConfigs {
@@ -23,7 +23,7 @@ android {
 
     buildTypes {
         debug {
-            minifyEnabled true
+            minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             signingConfig signingConfigs.release
         }
@@ -37,16 +37,10 @@ android {
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
-    implementation 'com.android.support:appcompat-v7:26.1.0'
-    implementation 'com.android.support.constraint:constraint-layout:1.0.2'
-    implementation 'com.google.android.gms:play-services-places:11.6.0'
+    implementation 'com.android.support:appcompat-v7:27.1.1'
+    implementation 'com.android.support.constraint:constraint-layout:1.1.2'
+    implementation 'com.android.support:multidex:1.0.3'
+
     //Fillr dependencies
-    implementation(group: 'com.fillr', name: 'fillrcore', version: '4.6.11', ext: 'aar', classifier: 'fillrEmbeddedLiteRelease') {
-        transitive true
-        exclude group: 'com.google.firebase', module: 'firebase-core'
-    }
-    implementation(group: 'com.fillr', name: 'fillr-browser-sdk', version: '3.5.2', ext: 'aar', classifier: 'release') {
-        transitive true
-    }
-    implementation(group: 'com.fillr', name: 'fillr-analytics', version: '1.2.3', ext: 'aar', classifier: 'release')
+    implementation ('com.fillr:fillrcore-fillrembedded:4.7.2')
 }

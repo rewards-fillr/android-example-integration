@@ -113,6 +113,9 @@
 -dontwarn com.google.android.gms.**
 -dontwarn org.android.api.**
 -dontwarn org.springframework.**
+-dontwarn org.apache.commons.logging.**
+-dontwarn android.net.http.**
+-dontwarn com.android.internal.**
 
 -keep class com.google.android.gms.location.** { *; }
 -keep interface com.google.android.gms.location.** { *; }
@@ -139,3 +142,4 @@
 }
 
 -keep class com.fillr.example.integration.** { *; }
+

@@ -63,7 +63,6 @@ public class ExampleWebViewHeadfulActivity extends AppCompatActivity {
         //        fillr.triggerFill(webView);
         //    }
         //});*/
-
         webView.loadUrl("file:///android_asset/sample_form.html");
     }
 
