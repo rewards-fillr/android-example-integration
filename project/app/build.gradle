@@ -42,7 +42,10 @@ dependencies {
     implementation 'com.android.support:multidex:1.0.3'
 
     //Fillr dependencies
-    implementation ('com.fillr:fillrcore-fillrembedded:4.7.2'){
+    implementation ('com.fillr:fillrcore-fillrembedded:4.7.3'){
+        transitive true
         exclude group: 'org.apache.httpcomponents', module: 'httpclient'
     }
+
+
 }
