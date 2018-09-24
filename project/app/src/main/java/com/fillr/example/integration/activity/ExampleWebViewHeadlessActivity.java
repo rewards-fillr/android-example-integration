@@ -1,14 +1,20 @@
 package com.fillr.example.integration.activity;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.webkit.WebView;
 
 import com.fillr.browsersdk.Fillr;
+import com.fillr.browsersdk.model.FillrCartInformationExtraction;
 import com.fillr.browsersdk.model.FillrMapping;
 import com.fillr.browsersdk.model.FillrWebView;
 import com.fillr.browsersdk.model.FillrWebViewClient;
 import com.fillr.example.integration.R;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.HashMap;
 import java.util.List;
@@ -37,7 +43,40 @@ public class ExampleWebViewHeadlessActivity extends AppCompatActivity {
 
         webView.setWebViewClient(new FillrWebViewClient());
 
-        webView.loadUrl("http://www.fillr.com/demo");
+        Fillr.getInstance().setCartInformationExtractionEnabled(true);
+        Fillr.getInstance().setCartInformationExtractionListener(new FillrCartInformationExtraction.FillrCartInformationExtractionListener() {
+            @Override
+            public void onCartDetected(Object webView, FillrCartInformationExtraction.FillrCartInformation cartInfo) {
+                try {
+                    JSONObject cart = new JSONObject(cartInfo.json);
+
+                    JSONArray productList = cart.getJSONArray("product_list");
+                    double cartTotal = cart.getDouble("cart_total");
+
+                    StringBuilder builder = new StringBuilder();
+                    for (int i = 0; i < productList.length(); i++) {
+                        builder.append(productList.get(i).toString()).append("\n");
+                    }
+                    builder.append("Total ").append(cartTotal).append("\n");
+                    builder.append("page_url: ").append(cart.getString("page_url")).append("\n");
+                    builder.append("version: ").append(cart.getString("version"));
+                    android.app.AlertDialog alertDialog = new android.app.AlertDialog.Builder(ExampleWebViewHeadlessActivity.this).create();
+                    alertDialog.setTitle("Cart Detected " + productList.length());
+                    alertDialog.setMessage(builder.toString());
+                    alertDialog.setButton(android.app.AlertDialog.BUTTON_NEUTRAL, "OK",
+                            new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int which) {
+                                    dialog.dismiss();
+                                }
+                            });
+                    alertDialog.show();
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+
+        webView.loadUrl("https://www.hm.com");
     }
 
     /**
@@ -95,7 +134,7 @@ public class ExampleWebViewHeadlessActivity extends AppCompatActivity {
 
     /**
      * @param webView the WebView attached to the
-     * {@link android.webkit.WebViewClient#onPageFinished(WebView, String)} onPageFinished} method.
+     *                {@link android.webkit.WebViewClient#onPageFinished(WebView, String)} onPageFinished} method.
      */
     private void fillrOnPageFinishedListener(WebView webView) {
         fillr.onPageFinished(webView);
