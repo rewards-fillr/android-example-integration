@@ -19,13 +19,6 @@ allprojects {
     repositories {
         google()
         jcenter()
-        maven {
-            url "https://fillrautofill.bintray.com/maven"
-            credentials {
-                username 'fillr-klarna'
-                password 'askfillrforpw'
-            }
-        }
     }
 }
 

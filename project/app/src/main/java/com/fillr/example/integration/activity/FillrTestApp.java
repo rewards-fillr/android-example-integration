@@ -12,8 +12,8 @@ public class FillrTestApp extends Application {
     public void onCreate() {
         super.onCreate();
         //Step 1 - Initialize Fillr Application
-        FillrApplication app = FillrApplication.getInstance();
-        app.init(this);
+        FillrApplication app = FillrApplication.getInstance(this);
+        app.init();
     }
 
     @Override
