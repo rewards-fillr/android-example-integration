@@ -146,6 +146,14 @@ public class ExampleWebViewHeadlessActivity extends AppCompatActivity {
         fillrOnResume();
     }
 
+    @Override
+    protected void onPause() {
+        super.onPause();
+        if (fillr != null) {
+            //fillr.onPause();
+        }
+    }
+
     /**
      * Optional configuration. Used to identify when the hosting activity resumes.
      */
