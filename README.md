@@ -34,12 +34,12 @@ Before getting started, please ensure you have the following:
 
     ```java
     //Place your Fillr development key and secret values here
-    //You can acquire a key/secret pair at https://developer.fillr.com
+    //You can acquire a key/secret pair at product@fillr.com
     private static final String FILLR_KEY = "YOUR_FILLR_DEVELOPER_KEY";
     private static final String FILLR_SECRET = "YOUR_FILLR_SECRET_KEY";
     ```
     
-    Insert your API/Secret key pair you got from the [Fillr Developer Portal](https://developer.fillr.com/users/sign_up) here and save the file.
+    Insert your API/Secret key pair you got from the proudct@fillr.com
 
 4.  Now select 'Run -> Run app' in Android Studio to launch the app on the Android Simulator or your native Android device.  
 
