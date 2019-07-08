@@ -9,8 +9,8 @@ The code and this project (and highlighted below) can be used as a roadmap when 
 
 Before getting started, please ensure you have the following:
 
-1.  A Fillr API/Secret key pair.  [Contact us](mailto:ct@fillr.com) to get an API/Secrey key pair.
-2.  An up-to-date copy of [Android Studio](https://developer.android.com/studio/index.html) with SDK Level 27 (Oreo 8.1) installed.
+1.  A Fillr API/Secret key pair.  [Contact us](mailto:product@fillr.com) to get an API/Secrey key pair.
+2.  An up-to-date copy of [Android Studio](https://developer.android.com/studio/index.html) with SDK Level 28 (Oreo 8.1) installed.
 3.  A simulator [configured in AVD](https://developer.android.com/studio/run/managing-avds.html#createavd) or a native Android device to run the example on.
 
 
@@ -63,11 +63,9 @@ To set up your own Android project to use the Fillr Embedded SDK, you'll need to
 
     ```gradle
     //Fillr dependencies
-    implementation(group: 'com.fillr', name: 'fillrcore', version: '4.6.7', ext: 'aar', classifier: 'fillrEmbeddedRelease') {
+    implementation(group: 'com.fillr', name: 'fillrcore', version: '5.1.9', ext: 'aar', classifier: 'fillrEmbeddedRelease') {
         transitive true
     }
-    implementation(group: 'com.fillr', name: 'fillr-browser-sdk', version: '3.4.4', ext: 'aar', classifier: 'release')
-    implementation(group: 'com.fillr', name: 'fillr-analytics', version: '1.2.3', ext: 'aar', classifier: 'release')
     ```
     
 2.  Press the 'Sync Now' option that appears in the upper-right corner of Android Studio and wait for the Sync to complete.  This will download the Fillr SDK and add it to your project's classpath.
