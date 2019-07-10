@@ -63,11 +63,7 @@ To set up your own Android project to use the Fillr Embedded SDK, you'll need to
 
     ```gradle
     //Fillr dependencies
-    implementation(group: 'com.fillr', name: 'fillrcore', version: '4.6.7', ext: 'aar', classifier: 'fillrEmbeddedRelease') {
-        transitive true
-    }
-    implementation(group: 'com.fillr', name: 'fillr-browser-sdk', version: '3.4.4', ext: 'aar', classifier: 'release')
-    implementation(group: 'com.fillr', name: 'fillr-analytics', version: '1.2.3', ext: 'aar', classifier: 'release')
+    implementation 'com.fillr:fillrcore-fillrembedded:5.1.3'
     ```
     
 2.  Press the 'Sync Now' option that appears in the upper-right corner of Android Studio and wait for the Sync to complete.  This will download the Fillr SDK and add it to your project's classpath.
@@ -110,12 +106,18 @@ Once you've completed the setup steps above you're ready to start integrating Fi
             }
         }
         ```
-    * Notify Fillr of `onResume()` events:
+    * Notify Fillr of `onResume()` and `onPause()` events:
         ```java
-        @Override
-        protected void onResume() {
+         @Override
+         protected void onResume() {
             super.onResume();
             fillr.onResume();
+         }
+
+         @Override
+         protected void onPause() {
+            super.onPause();
+            //fillr.onPause();            
         }
         ```
     * **Optional** - Expose Fillr's Settings UI:
