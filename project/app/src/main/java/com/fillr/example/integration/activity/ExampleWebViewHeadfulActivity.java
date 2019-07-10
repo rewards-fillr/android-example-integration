@@ -73,6 +73,14 @@ public class ExampleWebViewHeadfulActivity extends AppCompatActivity {
     }
 
     @Override
+    protected void onPause() {
+        super.onPause();
+        if (fillr != null) {
+            //fillr.onPause();
+        }
+    }
+
+    @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent intent) {
         if (requestCode == Fillr.FILLR_REQUEST_CODE && resultCode == RESULT_OK) {
             fillr.processForm(intent);
