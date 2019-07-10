@@ -43,7 +43,7 @@ dependencies {
     implementation 'com.android.support.constraint:constraint-layout:1.1.3'
     implementation 'com.android.support:multidex:1.0.3'
 
-    implementation(group: 'com.fillr', name: 'fillrcore-fillrembeddedlite', version: '5.0.4', ext: 'aar') {
+    implementation(group: 'com.fillr', name: 'fillrcore-fillrembeddedlite', version: '5.2.1', ext: 'aar') {
         transitive true
     }
 }

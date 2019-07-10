@@ -22,7 +22,7 @@ import com.fillr.example.integration.R;
  */
 public class ExampleWebViewHeadfulActivity extends AppCompatActivity {
     //TODO:  place your Fillr development key and secret values here
-    //       you can acquire a key/secret pair at https://developer.fillr.com
+    //       you can acquire a key/secret pair at product@fillr.com
     private static final String FILLR_KEY = "YOUR_FILLR_DEVELOPER_KEY";
     private static final String FILLR_SECRET = "YOUR_FILLR_SECRET_KEY";
 
