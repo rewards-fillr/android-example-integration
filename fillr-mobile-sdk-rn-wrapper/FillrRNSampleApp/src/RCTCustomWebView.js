@@ -10,12 +10,6 @@ export default class CustomWebView extends Component {
     FillrHeadlessMode.initializeFillr();     
   }
 
-  static propTypes = {
-    //...WebView.propTypes,
-    //finalUrl: String
-    //onNavigationCompleted: PropTypes.func
-  };
-
   static defaultProps = {
         finalUrl: 'about:blank',
   };

@@ -54,8 +54,8 @@ public class FillrHeadlessModule extends ReactContextBaseJavaModule {
                     = new FillrBrowserProperties("General", "General",
                     R.drawable.com_fillr_icon_keyboard_icon_selector, Color.parseColor("#389d00"), FillrAuthenticationStore.WidgetSource.LOCAL);
 
-            String devKey = "your_dev_key";
-            String secretKey = "your_sample_key";
+            String devKey = "your_developer_key";
+            String secretKey = "your_secret_key";
 
             fillr.initialise(devKey, secretKey, currentActivity, Fillr.BROWSER_TYPE.WEB_KIT, fillrBrowserProperties);
 

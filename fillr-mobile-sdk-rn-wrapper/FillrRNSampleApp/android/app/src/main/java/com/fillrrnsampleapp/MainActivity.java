@@ -1,6 +1,7 @@
 package com.fillrrnsampleapp;
 
 import com.facebook.react.ReactActivity;
+import com.fillr.browsersdk.Fillr;
 
 public class MainActivity extends ReactActivity {
 
@@ -12,4 +13,17 @@ public class MainActivity extends ReactActivity {
     protected String getMainComponentName() {
         return "FillrRNSampleApp";
     }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        Fillr.getInstance().onPause();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Fillr.getInstance().onResume();
+    }
+
 }

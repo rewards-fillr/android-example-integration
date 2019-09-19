@@ -46,8 +46,6 @@
 ## Usage
 ```javascript
 import RNFillrRnWrapper from 'react-native-fillr-rn-wrapper';
-
-// TODO: What to do with the module?
 RNFillrRnWrapper;
 ```
   

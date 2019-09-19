@@ -29,7 +29,7 @@ public class CustomWebViewManager extends ReactWebViewManager {
             boolean shouldOverride = super.shouldOverrideUrlLoading(view, url);
             String finalUrl = ((CustomWebView) view).getFinalUrl();
 
-            if (!shouldOverride && url != null && finalUrl != null && new String(url).equals(finalUrl)) {
+            if (!shouldOverride && url != null && url.equals(finalUrl)) {
                 final WritableMap params = Arguments.createMap();
                 dispatchEvent(view, new NavigationCompletedEvent(view.getId(), params));
             }
