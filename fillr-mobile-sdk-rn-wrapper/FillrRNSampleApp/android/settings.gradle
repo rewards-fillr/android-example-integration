@@ -1,0 +1,8 @@
+rootProject.name = 'FillrRNSampleApp'
+include ':react-native-webview'
+project(':react-native-webview').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-webview/android')
+include ':react-native-fillr-rn-wrapper'
+project(':react-native-fillr-rn-wrapper').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-fillr-rn-wrapper/android')
+include ':react-native-fillr-rn-wrapper'
+project(':react-native-fillr-rn-wrapper').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-fillr-rn-wrapper/android')
+include ':app'
