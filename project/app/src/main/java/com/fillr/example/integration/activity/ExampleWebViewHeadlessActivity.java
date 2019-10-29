@@ -6,10 +6,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.webkit.WebView;
 
 import com.fillr.browsersdk.Fillr;
+import com.fillr.browsersdk.FillrConfig;
+import com.fillr.browsersdk.model.FillrBrowserProperties;
 import com.fillr.browsersdk.model.FillrCartInformationExtraction;
 import com.fillr.browsersdk.model.FillrMapping;
 import com.fillr.browsersdk.model.FillrWebView;
 import com.fillr.browsersdk.model.FillrWebViewClient;
+import com.fillr.browsersdk.model.FillrWidgetAuth;
 import com.fillr.example.integration.R;
 
 import org.json.JSONArray;
@@ -27,8 +30,10 @@ public class ExampleWebViewHeadlessActivity extends AppCompatActivity {
 
     //TODO:  place your Fillr development key and secret values here
     //       you can acquire a key/secret pair at product@fillr.com
-    private static final String FILLR_KEY = "YOUR_FILLR_DEVELOPER_KEY";
+    private static final String FILLR_KEY = "YOUR_DEVELOPER_KEY";
     private static final String FILLR_SECRET = "YOUR_FILLR_SECRET_KEY";
+    private static final String FILLR_CART_SCRAPER_USERNAME = "YOUR_CART_SCRAPER_USERNAME";
+    private static final String FILLR_CART_SCRAPER_PASSWORD = "YOUR_CART_SCRAPER_PASSWORD";
 
     private Fillr fillr;
 
@@ -91,7 +96,10 @@ public class ExampleWebViewHeadlessActivity extends AppCompatActivity {
         //For step 1 look in the com.fillr.FillrApplication
         fillr = Fillr.getInstance();
         //Step 2. Initialize Fillr with the necessary keys.
-        fillr.initialise(FILLR_KEY, FILLR_SECRET, this, Fillr.BROWSER_TYPE.WEB_KIT);
+        FillrConfig config = new FillrConfig(FILLR_KEY, FILLR_SECRET, new FillrWidgetAuth(FILLR_CART_SCRAPER_USERNAME, FILLR_CART_SCRAPER_PASSWORD));
+        FillrBrowserProperties properties = new FillrBrowserProperties("BrowserName", "BrowserName");
+        fillr.initialise(config, this, Fillr.BROWSER_TYPE.WEB_KIT, properties);
+
         //Step 3. Set the FillMode. We support two different modes headless and headful.
         fillr.setFillMode(Fillr.FillMode.HEADLESS);
         //Step 4. Set the data provider. This is called when,
@@ -150,7 +158,7 @@ public class ExampleWebViewHeadlessActivity extends AppCompatActivity {
     protected void onPause() {
         super.onPause();
         if (fillr != null) {
-            //fillr.onPause();
+            fillr.onPause();
         }
     }
 
