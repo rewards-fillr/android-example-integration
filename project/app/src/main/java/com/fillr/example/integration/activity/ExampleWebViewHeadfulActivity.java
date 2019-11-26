@@ -76,7 +76,7 @@ public class ExampleWebViewHeadfulActivity extends AppCompatActivity {
     protected void onPause() {
         super.onPause();
         if (fillr != null) {
-            //fillr.onPause();
+            fillr.onPause();
         }
     }
 
