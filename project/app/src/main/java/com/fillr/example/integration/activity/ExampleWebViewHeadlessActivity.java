@@ -150,7 +150,7 @@ public class ExampleWebViewHeadlessActivity extends AppCompatActivity {
     protected void onPause() {
         super.onPause();
         if (fillr != null) {
-            //fillr.onPause();
+            fillr.onPause();
         }
     }
 
