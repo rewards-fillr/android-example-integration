@@ -9,7 +9,9 @@ import android.view.MenuItem;
 import android.webkit.WebView;
 
 import com.fillr.browsersdk.Fillr;
+import com.fillr.browsersdk.FillrConfig;
 import com.fillr.browsersdk.model.FillrWebViewClient;
+import com.fillr.browsersdk.model.FillrWidgetAuth;
 import com.fillr.embedded.profile.FEMainActivity;
 import com.fillr.example.integration.R;
 
@@ -39,7 +41,7 @@ public class ExampleWebViewHeadfulActivity extends AppCompatActivity {
 
         //Fillr autofill setup
         fillr = Fillr.getInstance();
-        fillr.initialise(FILLR_KEY, FILLR_SECRET, this, Fillr.BROWSER_TYPE.WEB_KIT);
+        fillr.initialise(new FillrConfig(FILLR_KEY, FILLR_SECRET, new FillrWidgetAuth("<Cart Scraper Username>", "Cart Scraper Password")), this, Fillr.BROWSER_TYPE.WEB_KIT);
 
         //note that this must be called prior to the loadUrl() call, below
         fillr.trackWebView(webView);

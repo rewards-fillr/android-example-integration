@@ -6,10 +6,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.webkit.WebView;
 
 import com.fillr.browsersdk.Fillr;
+import com.fillr.browsersdk.FillrConfig;
 import com.fillr.browsersdk.model.FillrCartInformationExtraction;
 import com.fillr.browsersdk.model.FillrMapping;
 import com.fillr.browsersdk.model.FillrWebView;
 import com.fillr.browsersdk.model.FillrWebViewClient;
+import com.fillr.browsersdk.model.FillrWidgetAuth;
 import com.fillr.example.integration.R;
 
 import org.json.JSONArray;
@@ -91,7 +93,7 @@ public class ExampleWebViewHeadlessActivity extends AppCompatActivity {
         //For step 1 look in the com.fillr.FillrApplication
         fillr = Fillr.getInstance();
         //Step 2. Initialize Fillr with the necessary keys.
-        fillr.initialise(FILLR_KEY, FILLR_SECRET, this, Fillr.BROWSER_TYPE.WEB_KIT);
+        fillr.initialise(new FillrConfig(FILLR_KEY, FILLR_SECRET, new FillrWidgetAuth("<Cart Scraper Username>", "Cart Scraper Password")), this, Fillr.BROWSER_TYPE.WEB_KIT);
         //Step 3. Set the FillMode. We support two different modes headless and headful.
         fillr.setFillMode(Fillr.FillMode.HEADLESS);
         //Step 4. Set the data provider. This is called when,
