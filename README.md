@@ -94,7 +94,7 @@ Once you've completed the setup steps above you're ready to start integrating Fi
         ```java
         //Note that this must be called prior to calling loadUrl() on the WebView.
         //If you have multiple WebView instances, repeat this step for each one.
-        fillr.trackWebView(yourWebView);
+        fillr.trackWebView(yourWebView, FillrWebView.OPTIONS_TLS_PROXY);
         ```
     * Handle successful fills from Fillr in `onActivityResult()`:
         ```java
@@ -225,7 +225,7 @@ Fillr supports either *Headful* or *Headless mode*. The following code segments 
         ```java
             //Note that this must be called prior to calling loadUrl() on the WebView.
             //If you have multiple WebView instances, repeat this step for each one.
-            fillr.trackWebView(yourWebView);
+            fillr.trackWebView(yourWebView, FillrWebView.OPTIONS_TLS_PROXY);
         ``` 
 
     * Assign the FillrWebviewClient as your [WebViewClient](https://developer.android.com/reference/android/webkit/WebViewClient.html):
