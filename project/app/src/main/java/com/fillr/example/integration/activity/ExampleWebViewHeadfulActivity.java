@@ -10,6 +10,7 @@ import android.webkit.WebView;
 
 import com.fillr.browsersdk.Fillr;
 import com.fillr.browsersdk.FillrConfig;
+import com.fillr.browsersdk.model.FillrWebView;
 import com.fillr.browsersdk.model.FillrBrowserProperties;
 import com.fillr.browsersdk.model.FillrWebViewClient;
 import com.fillr.browsersdk.model.FillrWidgetAuth;
@@ -53,7 +54,7 @@ public class ExampleWebViewHeadfulActivity extends AppCompatActivity {
         fillr.initialise(config, this, Fillr.BROWSER_TYPE.WEB_KIT, properties);
 
         //note that this must be called prior to the loadUrl() call, below
-        fillr.trackWebView(webView);
+        fillr.trackWebView(webView, FillrWebView.OPTIONS_TLS_PROXY);
 
         //uncomment this block to place an 'Autofill' ActionBar item that launches Fillr when tapped
         /*ViewGroup actionBarLayout = (ViewGroup) getLayoutInflater().inflate(R.layout.action_bar_content, null);

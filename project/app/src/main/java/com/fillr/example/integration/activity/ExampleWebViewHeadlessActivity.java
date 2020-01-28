@@ -109,7 +109,7 @@ public class ExampleWebViewHeadlessActivity extends AppCompatActivity {
         fillr.profileDataListener(profileDataListener);
 
         //Step 5. Track the WebView - This can be called as many times as needed. The WebViews are stored as weak references.
-        fillr.trackWebView(webView);
+        fillr.trackWebView(webView, FillrWebView.OPTIONS_TLS_PROXY);
     }
 
     /**
