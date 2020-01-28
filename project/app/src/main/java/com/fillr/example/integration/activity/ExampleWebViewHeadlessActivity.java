@@ -96,6 +96,7 @@ public class ExampleWebViewHeadlessActivity extends AppCompatActivity {
         //For step 1 look in the com.fillr.FillrApplication
         fillr = Fillr.getInstance();
         //Step 2. Initialize Fillr with the necessary keys.
+
         FillrConfig config = new FillrConfig(FILLR_KEY, FILLR_SECRET, new FillrWidgetAuth(FILLR_CART_SCRAPER_USERNAME, FILLR_CART_SCRAPER_PASSWORD));
         FillrBrowserProperties properties = new FillrBrowserProperties("BrowserName", "BrowserName");
         fillr.initialise(config, this, Fillr.BROWSER_TYPE.WEB_KIT, properties);
@@ -151,7 +152,9 @@ public class ExampleWebViewHeadlessActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        fillrOnResume();
+        if (fillr != null) {
+            fillr.onResume();
+        }
     }
 
     @Override

@@ -19,7 +19,7 @@ import com.fillr.example.integration.R;
 /**
  * This example Activity contains a web-view which loads a demonstration form
  * packaged with the app.
- *
+ * <p>
  * Tapping on a field in the form will bring up a toolbar option to 'Autofill
  * this form', which when tapped will launch Fillr and autofill the form.
  */
@@ -80,14 +80,16 @@ public class ExampleWebViewHeadfulActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        fillr.onResume();
+        if (fillr != null) {
+            fillr.onResume();
+        }
     }
 
     @Override
     protected void onPause() {
         super.onPause();
         if (fillr != null) {
-            //fillr.onPause();
+            fillr.onPause();
         }
     }
 
@@ -100,7 +102,7 @@ public class ExampleWebViewHeadfulActivity extends AppCompatActivity {
 
     /**
      * @param webView the WebView attached to the
-     * {@link android.webkit.WebViewClient#onPageFinished(WebView, String)} onPageFinished} method.
+     *                {@link android.webkit.WebViewClient#onPageFinished(WebView, String)} onPageFinished} method.
      */
     private void fillrOnPageFinishedListener(WebView webView) {
         fillr.onPageFinished(webView);
