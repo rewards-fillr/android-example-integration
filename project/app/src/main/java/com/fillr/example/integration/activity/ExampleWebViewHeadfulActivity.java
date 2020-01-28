@@ -10,6 +10,7 @@ import android.webkit.WebView;
 
 import com.fillr.browsersdk.Fillr;
 import com.fillr.browsersdk.FillrConfig;
+import com.fillr.browsersdk.model.FillrBrowserProperties;
 import com.fillr.browsersdk.model.FillrWebViewClient;
 import com.fillr.browsersdk.model.FillrWidgetAuth;
 import com.fillr.embedded.profile.FEMainActivity;
@@ -25,8 +26,10 @@ import com.fillr.example.integration.R;
 public class ExampleWebViewHeadfulActivity extends AppCompatActivity {
     //TODO:  place your Fillr development key and secret values here
     //       you can acquire a key/secret pair at product@fillr.com
-    private static final String FILLR_KEY = "YOUR_FILLR_DEVELOPER_KEY";
+    private static final String FILLR_KEY = "YOUR_DEVELOPER_KEY";
     private static final String FILLR_SECRET = "YOUR_FILLR_SECRET_KEY";
+    private static final String FILLR_CART_SCRAPER_USERNAME = "YOUR_CART_SCRAPER_USERNAME";
+    private static final String FILLR_CART_SCRAPER_PASSWORD = "YOUR_CART_SCRAPER_PASSWORD";
 
     private WebView webView;
     private Fillr fillr;
@@ -41,7 +44,13 @@ public class ExampleWebViewHeadfulActivity extends AppCompatActivity {
 
         //Fillr autofill setup
         fillr = Fillr.getInstance();
-        fillr.initialise(new FillrConfig(FILLR_KEY, FILLR_SECRET, new FillrWidgetAuth("<Cart Scraper Username>", "Cart Scraper Password")), this, Fillr.BROWSER_TYPE.WEB_KIT);
+
+        //used to enable the cart scraper module
+        FillrWidgetAuth optionalConfig = new FillrWidgetAuth(FILLR_CART_SCRAPER_USERNAME, FILLR_CART_SCRAPER_PASSWORD);
+
+        FillrConfig config = new FillrConfig(FILLR_KEY, FILLR_SECRET, optionalConfig);
+        FillrBrowserProperties properties = new FillrBrowserProperties("BrowserName", "BrowserName");
+        fillr.initialise(config, this, Fillr.BROWSER_TYPE.WEB_KIT, properties);
 
         //note that this must be called prior to the loadUrl() call, below
         fillr.trackWebView(webView);
