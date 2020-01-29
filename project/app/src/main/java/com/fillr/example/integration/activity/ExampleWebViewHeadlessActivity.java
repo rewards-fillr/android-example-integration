@@ -93,16 +93,16 @@ public class ExampleWebViewHeadlessActivity extends AppCompatActivity {
         @Override
         public void onPageStarted(WebView view, String url, Bitmap favicon) {
             super.onPageStarted(view, url, favicon);
-            boolean isZipIntegratedMerchant = false; //... check webView.url against zip merchants list
-            if (!isZipIntegratedMerchant) {
+            boolean isIntegratedMerchant = false; //... check webView.url against zip merchants list
+            if (!isIntegratedMerchant) {
                 Fillr.getInstance().processAffiliateForURL(url, view);
             }
         }
 
         @Override
         public WebResourceResponse shouldInterceptRequest(WebView view, WebResourceRequest request) {
-            boolean isZipIntegratedMerchant = false; //... check webView.url against zip merchants list
-            if (!isZipIntegratedMerchant) {
+            boolean isIntegratedMerchant = false; //... check webView.url against zip merchants list
+            if (!isIntegratedMerchant) {
                 Fillr.getInstance().processAffiliateForRequest(request, view);
             }
             return super.shouldInterceptRequest(view, request);
