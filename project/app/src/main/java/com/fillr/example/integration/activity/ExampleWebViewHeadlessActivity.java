@@ -1,10 +1,12 @@
 package com.fillr.example.integration.activity;
 
 import android.content.DialogInterface;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.webkit.WebResourceRequest;
+import android.webkit.WebResourceResponse;
 import android.webkit.WebView;
-
 import com.fillr.browsersdk.Fillr;
 import com.fillr.browsersdk.FillrConfig;
 import com.fillr.browsersdk.model.FillrBrowserProperties;
@@ -14,11 +16,9 @@ import com.fillr.browsersdk.model.FillrWebView;
 import com.fillr.browsersdk.model.FillrWebViewClient;
 import com.fillr.browsersdk.model.FillrWidgetAuth;
 import com.fillr.example.integration.R;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import java.util.HashMap;
 import java.util.List;
 
@@ -48,6 +48,10 @@ public class ExampleWebViewHeadlessActivity extends AppCompatActivity {
 
         webView.setWebViewClient(new FillrWebViewClient());
 
+        //Optional config if Affiliates are enabled,
+        //webView.setWebViewClient(new AffiliateWebViewClient());
+
+        //if cart scraping has been enabled - cart scraper credentials have to be set in the init method
         Fillr.getInstance().setCartInformationExtractionEnabled(true);
         Fillr.getInstance().setCartInformationExtractionListener(new FillrCartInformationExtraction.FillrCartInformationExtractionListener() {
             @Override
@@ -80,8 +84,30 @@ public class ExampleWebViewHeadlessActivity extends AppCompatActivity {
                 }
             }
         });
-
         webView.loadUrl("https://www.fillr.com/demo");
+    }
+
+
+    private class AffiliateWebViewClient extends FillrWebViewClient {
+
+        @Override
+        public void onPageStarted(WebView view, String url, Bitmap favicon) {
+            super.onPageStarted(view, url, favicon);
+            boolean isIntegratedMerchant = false; //... check webView.url against zip merchants list
+            if (!isIntegratedMerchant) {
+                Fillr.getInstance().processAffiliateForURL(url, view);
+            }
+        }
+
+        @Override
+        public WebResourceResponse shouldInterceptRequest(WebView view, WebResourceRequest request) {
+            boolean isIntegratedMerchant = false; //... check webView.url against zip merchants list
+            if (!isIntegratedMerchant) {
+                Fillr.getInstance().processAffiliateForRequest(request, view);
+            }
+            return super.shouldInterceptRequest(view, request);
+        }
+
     }
 
     /**
@@ -93,11 +119,14 @@ public class ExampleWebViewHeadlessActivity extends AppCompatActivity {
      * @see <a href="https://developer.fillr.com">Developer Center</a>
      */
     private void setupFillr(WebView webView) {
+
         //For step 1 look in the com.fillr.FillrApplication
         fillr = Fillr.getInstance();
-        //Step 2. Initialize Fillr with the necessary keys.
 
-        FillrConfig config = new FillrConfig(FILLR_KEY, FILLR_SECRET, new FillrWidgetAuth(FILLR_CART_SCRAPER_USERNAME, FILLR_CART_SCRAPER_PASSWORD));
+        //Step 2. Initialize Fillr with the correct config.
+        FillrWidgetAuth optionalCartScraperWidgetAuth = new FillrWidgetAuth(FILLR_CART_SCRAPER_USERNAME, FILLR_CART_SCRAPER_PASSWORD);
+        FillrConfig config = new FillrConfig(FILLR_KEY, FILLR_SECRET, optionalCartScraperWidgetAuth);
+
         FillrBrowserProperties properties = new FillrBrowserProperties("BrowserName", "BrowserName");
         fillr.initialise(config, this, Fillr.BROWSER_TYPE.WEB_KIT, properties);
 
@@ -108,8 +137,15 @@ public class ExampleWebViewHeadlessActivity extends AppCompatActivity {
         //  - When the page finishes loading.
         fillr.profileDataListener(profileDataListener);
 
-        //Step 5. Track the WebView - This can be called as many times as needed. The WebViews are stored as weak references.
+
+        //Step 5 - Setup Affiliate Url Redirection (optional feature)
+        config.setAffiliateProvider(FillrConfig.AFFILIATE_PROVIDER_VIGLINK, "Affiliate API Key Provided by Fillr");
+
+
+        //Step 6. Track the WebView - This can be called as many times as needed. The WebViews are stored as weak references.
         fillr.trackWebView(webView, FillrWebView.OPTIONS_TLS_PROXY);
+        //Optional config track method
+        //fillr.trackWebView(webView,  FillrWebView.OPTIONS_NONE);
     }
 
     /**
@@ -120,7 +156,7 @@ public class ExampleWebViewHeadlessActivity extends AppCompatActivity {
         /**
          * When a form is detected with fields that can be populated,
          * @param webView a reference to the webvie
-         * @param mapping
+         * @param mapping mapping request metadata
          */
         @Override
         public void onFormDetected(FillrWebView webView, FillrMapping mapping) {
@@ -141,14 +177,6 @@ public class ExampleWebViewHeadlessActivity extends AppCompatActivity {
         }
     };
 
-    /**
-     * @param webView the WebView attached to the
-     *                {@link android.webkit.WebViewClient#onPageFinished(WebView, String)} onPageFinished} method.
-     */
-    private void fillrOnPageFinishedListener(WebView webView) {
-        fillr.onPageFinished(webView);
-    }
-
     @Override
     protected void onResume() {
         super.onResume();
@@ -165,18 +193,9 @@ public class ExampleWebViewHeadlessActivity extends AppCompatActivity {
         }
     }
 
-    /**
-     * Optional configuration. Used to identify when the hosting activity resumes.
-     */
-    private void fillrOnResume() {
-        if (fillr != null) {
-            fillr.onResume();
-        }
-    }
-
     public static HashMap<String, String> assignMockProfileData(List<String> fields) {
         HashMap<String, String> profileData = new HashMap<>();
-        HashMap<String, String> mockData = buildProfile();
+        HashMap<String, String> mockData = ExampleWebViewHeadlessActivity.fillrFormNamespaceToProfileMapping();
 
         for (String field : fields) {
             //field is the namespace which needs to be mapped and sent back.
@@ -188,7 +207,7 @@ public class ExampleWebViewHeadlessActivity extends AppCompatActivity {
         return profileData;
     }
 
-    private static HashMap<String, String> buildProfile() {
+    private static HashMap<String, String> fillrFormNamespaceToProfileMapping() {
 
         HashMap<String, String> profileData = new HashMap<>();
         profileData.put("PersonalDetails.Honorific", "Mr.");
