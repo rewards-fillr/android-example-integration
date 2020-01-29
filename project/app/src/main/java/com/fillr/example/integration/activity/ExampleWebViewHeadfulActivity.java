@@ -7,7 +7,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.webkit.WebView;
-
 import com.fillr.browsersdk.Fillr;
 import com.fillr.browsersdk.FillrConfig;
 import com.fillr.browsersdk.model.FillrWebView;
@@ -99,14 +98,6 @@ public class ExampleWebViewHeadfulActivity extends AppCompatActivity {
         if (requestCode == Fillr.FILLR_REQUEST_CODE && resultCode == RESULT_OK) {
             fillr.processForm(intent);
         }
-    }
-
-    /**
-     * @param webView the WebView attached to the
-     *                {@link android.webkit.WebViewClient#onPageFinished(WebView, String)} onPageFinished} method.
-     */
-    private void fillrOnPageFinishedListener(WebView webView) {
-        fillr.onPageFinished(webView);
     }
 
     @Override
