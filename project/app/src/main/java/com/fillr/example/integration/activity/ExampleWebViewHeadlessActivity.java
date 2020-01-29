@@ -48,8 +48,8 @@ public class ExampleWebViewHeadlessActivity extends AppCompatActivity {
 
         webView.setWebViewClient(new FillrWebViewClient());
 
-        //Alternatively if Affiliates are enabled,
-        webView.setWebViewClient(new AffiliateWebViewClient());
+        //Optional config if Affiliates are enabled,
+        //webView.setWebViewClient(new AffiliateWebViewClient());
 
         //if cart scraping has been enabled - cart scraper credentials have to be set in the init method
         Fillr.getInstance().setCartInformationExtractionEnabled(true);
