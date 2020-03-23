@@ -2,8 +2,9 @@ package com.fillr.example.integration.activity;
 
 import android.content.DialogInterface;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.webkit.WebView;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.fillr.browsersdk.Fillr;
 import com.fillr.browsersdk.FillrConfig;

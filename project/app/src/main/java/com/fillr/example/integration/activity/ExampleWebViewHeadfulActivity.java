@@ -2,11 +2,12 @@ package com.fillr.example.integration.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.webkit.WebView;
+
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.fillr.browsersdk.Fillr;
 import com.fillr.browsersdk.FillrConfig;
@@ -99,6 +100,7 @@ public class ExampleWebViewHeadfulActivity extends AppCompatActivity {
         if (requestCode == Fillr.FILLR_REQUEST_CODE && resultCode == RESULT_OK) {
             fillr.processForm(intent);
         }
+        super.onActivityResult(requestCode, resultCode, intent);
     }
 
     /**

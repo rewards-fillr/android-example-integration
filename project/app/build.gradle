@@ -8,7 +8,7 @@ android {
         versionCode 1
         versionName "1.0"
         applicationId "com.fillr.example.integration"
-        minSdkVersion 16
+        minSdkVersion 18
         targetSdkVersion 28
         multiDexEnabled true
     }
@@ -39,10 +39,10 @@ android {
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
-    implementation 'com.android.support:appcompat-v7:28.0.0'
-    implementation 'com.android.support.constraint:constraint-layout:1.1.3'
-    implementation 'com.android.support:multidex:1.0.3'
-    implementation(group: 'com.fillr', name: 'fillrcore-fillrembeddedlite', version: '7.1.0', ext: 'aar') {
+    implementation 'androidx.appcompat:appcompat:1.1.0'
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.0'
+    implementation 'androidx.multidex:multidex:1.1.0'
+    implementation(group: 'com.fillr', name: 'fillrcore-fillrembeddedlite', version: '7.2.4', ext: 'aar') {
         transitive true
     }
 }
