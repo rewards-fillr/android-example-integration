@@ -103,14 +103,6 @@ public class ExampleWebViewHeadfulActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, intent);
     }
 
-    /**
-     * @param webView the WebView attached to the
-     *                {@link android.webkit.WebViewClient#onPageFinished(WebView, String)} onPageFinished} method.
-     */
-    private void fillrOnPageFinishedListener(WebView webView) {
-        fillr.onPageFinished(webView);
-    }
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_actions, menu);
