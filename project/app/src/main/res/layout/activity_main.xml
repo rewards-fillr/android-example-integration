@@ -13,13 +13,13 @@
         android:layout_centerInParent="true"
         android:orientation="vertical">
 
-        <android.support.v7.widget.AppCompatButton
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btnHeadful"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/btn_headful_mode" />
 
-        <android.support.v7.widget.AppCompatButton
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btnHeadless"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

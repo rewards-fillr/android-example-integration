@@ -3,10 +3,12 @@ package com.fillr.example.integration.activity;
 import android.content.DialogInterface;
 import android.graphics.Bitmap;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+import android.webkit.WebView;
 import android.webkit.WebResourceRequest;
 import android.webkit.WebResourceResponse;
-import android.webkit.WebView;
+
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.fillr.browsersdk.Fillr;
 import com.fillr.browsersdk.FillrConfig;
 import com.fillr.browsersdk.model.FillrBrowserProperties;
@@ -136,7 +138,6 @@ public class ExampleWebViewHeadlessActivity extends AppCompatActivity {
         //  - The form in question mutates
         //  - When the page finishes loading.
         fillr.profileDataListener(profileDataListener);
-
 
         //Step 5 - Setup Affiliate Url Redirection (optional feature)
         config.setAffiliateProvider(FillrConfig.AFFILIATE_PROVIDER_VIGLINK, "Affiliate API Key Provided by Fillr");
