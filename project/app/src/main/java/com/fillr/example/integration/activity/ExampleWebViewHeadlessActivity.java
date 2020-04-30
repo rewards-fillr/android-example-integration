@@ -86,7 +86,7 @@ public class ExampleWebViewHeadlessActivity extends AppCompatActivity {
                 }
             }
         });
-        webView.loadUrl("https://www.fillr.com/demo");
+        webView.loadUrl("https://www.fillr.com/test");
     }
 
 
