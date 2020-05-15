@@ -140,8 +140,7 @@ public class ExampleWebViewHeadlessActivity extends AppCompatActivity {
         fillr.profileDataListener(profileDataListener);
 
         //Step 5 - Setup Affiliate Url Redirection (optional feature)
-        config.setAffiliateProvider(FillrConfig.AFFILIATE_PROVIDER_VIGLINK, "Affiliate API Key Provided by Fillr");
-
+        config.setAffiliateEnabled(true);
 
         //Step 6. Track the WebView - This can be called as many times as needed. The WebViews are stored as weak references.
         fillr.trackWebView(webView, FillrWebView.OPTIONS_TLS_PROXY);
