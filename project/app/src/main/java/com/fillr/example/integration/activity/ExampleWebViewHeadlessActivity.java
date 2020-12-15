@@ -134,6 +134,7 @@ public class ExampleWebViewHeadlessActivity extends AppCompatActivity {
 
         //Step 3. Set the FillMode. We support two different modes headless and headful.
         fillr.setFillMode(Fillr.FillMode.HEADLESS);
+
         //Step 4. Set the data provider. This is called when,
         //  - The form in question mutates
         //  - When the page finishes loading.
@@ -143,9 +144,9 @@ public class ExampleWebViewHeadlessActivity extends AppCompatActivity {
         config.setAffiliateEnabled(true);
 
         //Step 6. Track the WebView - This can be called as many times as needed. The WebViews are stored as weak references.
-        fillr.trackWebView(webView, FillrWebView.OPTIONS_TLS_PROXY);
+        fillr.trackWebView(webView, FillrWebView.OPTIONS_NONE);
         //Optional config track method
-        //fillr.trackWebView(webView,  FillrWebView.OPTIONS_NONE);
+        //fillr.trackWebView(webView,  FillrWebView.OPTIONS_TLS_PROXY);
     }
 
     /**
