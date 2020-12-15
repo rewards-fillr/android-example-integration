@@ -45,13 +45,7 @@ public class ExampleWebViewHeadlessActivity extends AppCompatActivity {
         setContentView(R.layout.activity_example_headless_webview);
         WebView webView = findViewById(R.id.webview);
         webView.getSettings().setSupportZoom(false);
-
         setupFillr(webView);
-
-        webView.setWebViewClient(new FillrWebViewClient());
-
-        //Optional config if Affiliates are enabled,
-        //webView.setWebViewClient(new AffiliateWebViewClient());
 
         //if cart scraping has been enabled - cart scraper credentials have to be set in the init method
         Fillr.getInstance().setCartInformationExtractionEnabled(true);
@@ -124,6 +118,11 @@ public class ExampleWebViewHeadlessActivity extends AppCompatActivity {
 
         //For step 1 look in the com.fillr.FillrApplication
         fillr = Fillr.getInstance();
+
+        //setup WebViewClient - you can also extend FillrWebViewClient with your own WebViewClient implementation
+        webView.setWebViewClient(new FillrWebViewClient());
+        //Optional config if Affiliates are enabled,
+        //webView.setWebViewClient(new AffiliateWebViewClient());
 
         //Step 2. Initialize Fillr with the correct config.
         FillrWidgetAuth optionalCartScraperWidgetAuth = new FillrWidgetAuth(FILLR_CART_SCRAPER_USERNAME, FILLR_CART_SCRAPER_PASSWORD);
