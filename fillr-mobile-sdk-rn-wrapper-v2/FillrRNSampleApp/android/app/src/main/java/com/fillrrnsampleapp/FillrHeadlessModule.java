@@ -85,7 +85,6 @@ public class FillrHeadlessModule extends ReactContextBaseJavaModule {
                     profileData.put(field, mockData.getString(field));
                 }
             }
-
         } catch (JSONException e) {
             e.printStackTrace();
         }
