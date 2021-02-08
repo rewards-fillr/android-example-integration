@@ -25,5 +25,4 @@ public class MainActivity extends ReactActivity {
         super.onResume();
         Fillr.getInstance().onResume();
     }
-
 }

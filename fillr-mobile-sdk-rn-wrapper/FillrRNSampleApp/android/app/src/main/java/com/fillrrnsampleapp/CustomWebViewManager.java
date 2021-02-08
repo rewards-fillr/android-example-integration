@@ -22,7 +22,6 @@ public class CustomWebViewManager extends ReactWebViewManager {
     /* This name must match what we're referring to in JS */
     protected static final String REACT_CLASS = "RCTCustomWebView";
 
-
     protected static class CustomWebViewClient extends ReactWebViewClient {
         @Override
         public boolean shouldOverrideUrlLoading(WebView view, String url) {
