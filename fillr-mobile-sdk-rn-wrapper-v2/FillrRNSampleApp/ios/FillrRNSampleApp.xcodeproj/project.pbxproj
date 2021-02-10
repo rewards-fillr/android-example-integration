@@ -11,6 +11,12 @@
 		13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
+		2131069625D37CFD00308888 /* VERSION in Resources */ = {isa = PBXBuildFile; fileRef = 2131069325D37CFD00308888 /* VERSION */; };
+		2131069725D37CFD00308888 /* libFillrSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2131069425D37CFD00308888 /* libFillrSDK.a */; };
+		2131069825D37CFD00308888 /* FillrSDKBundle.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 2131069525D37CFD00308888 /* FillrSDKBundle.bundle */; };
+		213106A325D37D8E00308888 /* RNCCustomWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2131069D25D37D8E00308888 /* RNCCustomWebView.m */; };
+		213106A425D37D8E00308888 /* RNCCustomWebViewManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 213106A025D37D8E00308888 /* RNCCustomWebViewManager.m */; };
+		213106AC25D37DFE00308888 /* FillrSDKManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 213106AA25D37DFE00308888 /* FillrSDKManager.m */; };
 		21A72A2148CB8F8FB41C1E14 /* libPods-FillrRNSampleApp-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3485BFAD0BE3E627CD6AF196 /* libPods-FillrRNSampleApp-tvOSTests.a */; };
 		2D02E4BC1E0B4A80006451C7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		2D02E4BD1E0B4A84006451C7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
@@ -53,6 +59,21 @@
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = FillrRNSampleApp/main.m; sourceTree = "<group>"; };
 		18842667C5B59D6311C4BD6E /* libPods-FillrRNSampleApp-FillrRNSampleAppTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-FillrRNSampleApp-FillrRNSampleAppTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1B15BB4752F8E1754E6B5007 /* Pods-FillrRNSampleApp-tvOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FillrRNSampleApp-tvOSTests.debug.xcconfig"; path = "Target Support Files/Pods-FillrRNSampleApp-tvOSTests/Pods-FillrRNSampleApp-tvOSTests.debug.xcconfig"; sourceTree = "<group>"; };
+		2131068D25D37CFD00308888 /* FillrWidgetAuth.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FillrWidgetAuth.h; sourceTree = "<group>"; };
+		2131068E25D37CFD00308888 /* HeadlessBaseFillProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HeadlessBaseFillProvider.h; sourceTree = "<group>"; };
+		2131068F25D37CFD00308888 /* FillrCartInformationExtraction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FillrCartInformationExtraction.h; sourceTree = "<group>"; };
+		2131069025D37CFD00308888 /* FillrConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FillrConfig.h; sourceTree = "<group>"; };
+		2131069125D37CFD00308888 /* FillrWidget.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FillrWidget.h; sourceTree = "<group>"; };
+		2131069225D37CFD00308888 /* Fillr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Fillr.h; sourceTree = "<group>"; };
+		2131069325D37CFD00308888 /* VERSION */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = VERSION; sourceTree = "<group>"; };
+		2131069425D37CFD00308888 /* libFillrSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libFillrSDK.a; sourceTree = "<group>"; };
+		2131069525D37CFD00308888 /* FillrSDKBundle.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = FillrSDKBundle.bundle; sourceTree = "<group>"; };
+		2131069D25D37D8E00308888 /* RNCCustomWebView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNCCustomWebView.m; sourceTree = "<group>"; };
+		2131069E25D37D8E00308888 /* RNCCustomWebViewManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNCCustomWebViewManager.h; sourceTree = "<group>"; };
+		2131069F25D37D8E00308888 /* RNCCustomWebView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNCCustomWebView.h; sourceTree = "<group>"; };
+		213106A025D37D8E00308888 /* RNCCustomWebViewManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNCCustomWebViewManager.m; sourceTree = "<group>"; };
+		213106AA25D37DFE00308888 /* FillrSDKManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FillrSDKManager.m; sourceTree = "<group>"; };
+		213106AB25D37DFE00308888 /* FillrSDKManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FillrSDKManager.h; sourceTree = "<group>"; };
 		2D02E47B1E0B4A5D006451C7 /* FillrRNSampleApp-tvOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "FillrRNSampleApp-tvOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D02E4901E0B4A5D006451C7 /* FillrRNSampleApp-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "FillrRNSampleApp-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3485BFAD0BE3E627CD6AF196 /* libPods-FillrRNSampleApp-tvOSTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-FillrRNSampleApp-tvOSTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -82,6 +103,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2131069725D37CFD00308888 /* libFillrSDK.a in Frameworks */,
 				EDC622ED933738C1A864EC79 /* libPods-FillrRNSampleApp.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -128,12 +150,50 @@
 				008F07F21AC5B25A0029DE68 /* main.jsbundle */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.m */,
+				213106AB25D37DFE00308888 /* FillrSDKManager.h */,
+				213106AA25D37DFE00308888 /* FillrSDKManager.m */,
+				2131069F25D37D8E00308888 /* RNCCustomWebView.h */,
+				2131069D25D37D8E00308888 /* RNCCustomWebView.m */,
+				2131069E25D37D8E00308888 /* RNCCustomWebViewManager.h */,
+				213106A025D37D8E00308888 /* RNCCustomWebViewManager.m */,
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
 				13B07FB61A68108700A75B9A /* Info.plist */,
 				81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */,
 				13B07FB71A68108700A75B9A /* main.m */,
 			);
 			name = FillrRNSampleApp;
+			sourceTree = "<group>";
+		};
+		2131068A25D37CFD00308888 /* fillr-embedded-sdk-headless-only */ = {
+			isa = PBXGroup;
+			children = (
+				2131068B25D37CFD00308888 /* include */,
+				2131069325D37CFD00308888 /* VERSION */,
+				2131069425D37CFD00308888 /* libFillrSDK.a */,
+				2131069525D37CFD00308888 /* FillrSDKBundle.bundle */,
+			);
+			path = "fillr-embedded-sdk-headless-only";
+			sourceTree = "<group>";
+		};
+		2131068B25D37CFD00308888 /* include */ = {
+			isa = PBXGroup;
+			children = (
+				2131068C25D37CFD00308888 /* FillrSDK */,
+			);
+			path = include;
+			sourceTree = "<group>";
+		};
+		2131068C25D37CFD00308888 /* FillrSDK */ = {
+			isa = PBXGroup;
+			children = (
+				2131068D25D37CFD00308888 /* FillrWidgetAuth.h */,
+				2131068E25D37CFD00308888 /* HeadlessBaseFillProvider.h */,
+				2131068F25D37CFD00308888 /* FillrCartInformationExtraction.h */,
+				2131069025D37CFD00308888 /* FillrConfig.h */,
+				2131069125D37CFD00308888 /* FillrWidget.h */,
+				2131069225D37CFD00308888 /* Fillr.h */,
+			);
+			path = FillrSDK;
 			sourceTree = "<group>";
 		};
 		2D16E6871FA4F8E400B85C8A /* Frameworks */ = {
@@ -161,7 +221,6 @@
 				1B15BB4752F8E1754E6B5007 /* Pods-FillrRNSampleApp-tvOSTests.debug.xcconfig */,
 				C55412559BC99C22C996E3F7 /* Pods-FillrRNSampleApp-tvOSTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -175,6 +234,7 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
+				2131068A25D37CFD00308888 /* fillr-embedded-sdk-headless-only */,
 				13B07FAE1A68108700A75B9A /* FillrRNSampleApp */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				00E356EF1AD99517003FC87E /* FillrRNSampleAppTests */,
@@ -340,7 +400,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2131069625D37CFD00308888 /* VERSION in Resources */,
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
+				2131069825D37CFD00308888 /* FillrSDKBundle.bundle in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -568,8 +630,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				213106AC25D37DFE00308888 /* FillrSDKManager.m in Sources */,
 				13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */,
 				13B07FC11A68108700A75B9A /* main.m in Sources */,
+				213106A425D37D8E00308888 /* RNCCustomWebViewManager.m in Sources */,
+				213106A325D37D8E00308888 /* RNCCustomWebView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -659,6 +724,10 @@
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = FillrRNSampleApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/fillr-embedded-sdk-headless-only",
+				);
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -681,6 +750,10 @@
 				CURRENT_PROJECT_VERSION = 1;
 				INFOPLIST_FILE = FillrRNSampleApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/fillr-embedded-sdk-headless-only",
+				);
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",

@@ -6,18 +6,22 @@
  * @flow strict-local
  */
 
-import React, { Component } from 'react';
-import { WebView } from 'react-native-webview';
+import React from 'react';
+import FillrSDKManagerModule from './FillrSDKManagerModule';
+import CustomWebView from './CustomWebView';
 
-class MyWeb extends Component {
+export default class App extends React.Component {
+  constructor(props){
+    super(props);
+    FillrSDKManagerModule.initializeFillr();
+  }
+
   render() {
     return (
-      <WebView
-        source={{ uri: 'https://www.fillr.com/test' }}
-        style={{ marginTop: 20 }}
+      <CustomWebView
+      source={{ uri: 'https://www.fillr.com/test' }}
+      style={{ marginTop: 20 }}
       />
     );
   }
 }
-
-export default MyWeb;
