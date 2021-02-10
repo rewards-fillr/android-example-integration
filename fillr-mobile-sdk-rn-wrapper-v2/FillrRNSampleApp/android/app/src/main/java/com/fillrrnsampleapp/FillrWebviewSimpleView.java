@@ -31,5 +31,4 @@ public class FillrWebviewSimpleView extends SimpleViewManager<WebView> {
     public void loadUrl(WebView webView, String urlPath) {
         webView.loadUrl(urlPath);
     }
-
 }
