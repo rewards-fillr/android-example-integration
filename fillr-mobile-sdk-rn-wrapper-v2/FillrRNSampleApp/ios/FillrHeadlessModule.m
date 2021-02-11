@@ -22,7 +22,7 @@ RCT_EXTERN_METHOD(initializeFillr)
 
 - (void)initializeFillr {
   Fillr *fillr = [Fillr sharedInstance];
-  FillrConfig *fillrConfig = [[FillrConfig alloc] initWithDevKey:@"cde276fc6dc17e0b96328f274eff196c" secretKey:@"NGVjN2Y3ZjBlZTJkZTQyNGM4MzMwOGU="];
+  FillrConfig *fillrConfig = [[FillrConfig alloc] initWithDevKey:@"Your Dev Key" secretKey:@"Your Secret Key"];
   [fillr initialiseWithConfig:fillrConfig];
   fillr.fillProvider = [HeadlessBaseFillProvider sharedInstance];
   fillr.profilePayloadDelegate = self;
