@@ -11,9 +11,9 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class FillrHeadlessModulePackage implements ReactPackage {
+public class FillrSDKManagerModulePackage implements ReactPackage {
 
-    public FillrHeadlessModulePackage() {
+    public FillrSDKManagerModulePackage() {
     }
 
     @Override
