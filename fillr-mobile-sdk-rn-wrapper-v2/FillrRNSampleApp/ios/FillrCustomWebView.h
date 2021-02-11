@@ -9,11 +9,11 @@
 #import <React/RCTDefines.h>
 #import <WebKit/WebKit.h>
 
-@class RNCCustomWebView;
+@class FillrCustomWebView;
 
-@protocol RNCCustomWebViewDelegate <NSObject>
+@protocol FillrCustomWebViewDelegate <NSObject>
 
-- (BOOL)webView:(RNCCustomWebView *_Nonnull)webView
+- (BOOL)webView:(FillrCustomWebView *_Nonnull)webView
    shouldStartLoadForRequest:(NSMutableDictionary<NSString *, id> *_Nonnull)request
    withCallback:(RCTDirectEventBlock _Nonnull)callback;
 
@@ -24,9 +24,9 @@
 - (instancetype)initWithDelegate:(id<WKScriptMessageHandler>)scriptDelegate;
 @end
 
-@interface RNCCustomWebView : RCTView
+@interface FillrCustomWebView : RCTView
 
-@property (nonatomic, weak) id<RNCCustomWebViewDelegate> _Nullable delegate;
+@property (nonatomic, weak) id<FillrCustomWebViewDelegate> _Nullable delegate;
 @property (nonatomic, copy) NSDictionary * _Nullable source;
 @property (nonatomic, assign) BOOL messagingEnabled;
 @property (nonatomic, copy) NSString * _Nullable injectedJavaScript;

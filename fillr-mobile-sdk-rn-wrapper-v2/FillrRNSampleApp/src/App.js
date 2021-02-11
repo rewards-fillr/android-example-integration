@@ -8,38 +8,12 @@ import { WebView } from 'react-native-webview';
 export default class HomeScreen extends React.Component {
   render() {
     return (
-        <FillrUIWebView />
+        <WebViewContainer />
     );
   }
 }
 
- class FillrCustomWebView extends React.Component  {
-
-   constructor(props) {
-     super(props);
-     FillrHeadlessMode.initializeFillr();
-     this.state = { currenturl: "https://www.fillr.com/test", navbarUrl: ""};
-   }
-
-   onSubmitEdit = () => {
-     this.setState(previousState => ({ currenturl: this.state.navbarUrl} ));
-   }
-
-   render() {
-     return (
-         <WebView
-           ref={r => this.webview = r}
-           source={{ uri: this.state.currenturl }}
-           javaScriptEnabled={true}
-           domStorageEnabled={true}
-           decelerationRate="normal"
-           startInLoadingState={true}
-           onNavigationCompleted={(event) => console.log('--> Navigation to issues completed')} />
-     );
-   }
- }
-
-class FillrUIWebView extends React.Component  {
+class WebViewContainer extends React.Component  {
 
   constructor(props) {
     super(props);
@@ -55,7 +29,8 @@ class FillrUIWebView extends React.Component  {
           scrollEnabled={true}
           domStorageEnabled = {true}
           javaScriptEnabled={true}
-          bounces={true}          
+          bounces={true}
+          source={{ uri: 'https://www.fillr.com/test' }}
           url="https://www.fillr.com/test"
           onShouldStartLoadWithRequest={() => true}
           javaScriptEnabledAndroid={true}

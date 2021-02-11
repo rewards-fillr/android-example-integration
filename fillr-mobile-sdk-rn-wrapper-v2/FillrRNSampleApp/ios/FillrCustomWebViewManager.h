@@ -7,5 +7,5 @@
 
 #import <React/RCTViewManager.h>
 
-@interface RNCCustomWebViewManager : RCTViewManager
+@interface FillrCustomWebViewManager : RCTViewManager
 @end

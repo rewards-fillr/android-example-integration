@@ -5,20 +5,20 @@
 //  Created by Alex Bin Zhao on 8/2/21.
 //
 
-#import "FillrSDKManager.h"
+#import "FillrHeadlessModule.h"
 #import "React/RCTBridgeModule.h"
 #import "Fillr.h"
 #import "HeadlessBaseFillProvider.h"
 
-@interface RCT_EXTERN_REMAP_MODULE(FillrSDKManagerModule, FillrSDKManagerModule, NSObject)
+@interface RCT_EXTERN_REMAP_MODULE(FillrModule, FillrHeadlessModule, NSObject)
 RCT_EXTERN_METHOD(initializeFillr)
 @end
 
-@interface FillrSDKManagerModule()<FillrProfilePayloadDelegate>
+@interface FillrHeadlessModule()<FillrProfilePayloadDelegate>
 
 @end
  
-@implementation FillrSDKManagerModule
+@implementation FillrHeadlessModule
 
 - (void)initializeFillr {
   Fillr *fillr = [Fillr sharedInstance];

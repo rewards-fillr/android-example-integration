@@ -5,7 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-#import "RNCCustomWebView.h"
+#import "FillrCustomWebView.h"
 #import <React/RCTConvert.h>
 #import <React/RCTAutoInsetsProtocol.h>
 #import "RNCWKProcessPoolManager.h"
@@ -53,9 +53,9 @@ static NSDictionary* customCertificatesForHost;
 @end
 @implementation RNCWKWebView
 - (void)scrollWheel:(NSEvent *)theEvent {
-  RNCCustomWebView *RNCCustomWebView = (RNCCustomWebView *)[self superview];
-  RCTAssert([RNCCustomWebView isKindOfClass:[RNCCustomWebView class]], @"superview must be an RNCCustomWebView");
-  if (![RNCCustomWebView scrollEnabled]) {
+  FillrCustomWebView *fillrWebView = (FillrCustomWebView *)[self superview];
+  RCTAssert([fillrWebView isKindOfClass:[FillrCustomWebView class]], @"superview must be an FillrCustomWebView");
+  if (![fillrWebView scrollEnabled]) {
     [[self nextResponder] scrollWheel:theEvent];
     return;
   }
@@ -64,7 +64,7 @@ static NSDictionary* customCertificatesForHost;
 @end
 #endif // TARGET_OS_OSX
 
-@interface RNCCustomWebView () <WKUIDelegate, WKNavigationDelegate, WKScriptMessageHandler,
+@interface FillrCustomWebView () <WKUIDelegate, WKNavigationDelegate, WKScriptMessageHandler,
 #if !TARGET_OS_OSX
     UIScrollViewDelegate,
 #endif // !TARGET_OS_OSX
@@ -90,7 +90,7 @@ static NSDictionary* customCertificatesForHost;
 @property (nonatomic, strong) WKUserScript *atEndScript;
 @end
 
-@implementation RNCCustomWebView
+@implementation FillrCustomWebView
 {
 #if !TARGET_OS_OSX
   UIColor * _savedBackgroundColor;
@@ -760,7 +760,7 @@ static NSDictionary* customCertificatesForHost;
 {
   [super layoutSubviews];
 
-  // Ensure webview takes the position and dimensions of RNCCustomWebView
+  // Ensure webview takes the position and dimensions of FillrCustomWebView
   _webView.frame = self.bounds;
 #if !TARGET_OS_OSX
   _webView.scrollView.contentInset = _contentInset;
