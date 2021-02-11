@@ -51,8 +51,8 @@ public class FillrHeadlessModule extends ReactContextBaseJavaModule {
             FillrBrowserProperties fillrBrowserProperties
                     = new FillrBrowserProperties("Sample App", "Sample App");
 
-            String devKey = "key";
-            String secretKey = "secret";
+            String devKey = "cde276fc6dc17e0b96328f274eff196c";
+            String secretKey = "NGVjN2Y3ZjBlZTJkZTQyNGM4MzMwOGU=";
 
             fillr.initialise(new FillrConfig(devKey, secretKey), currentActivity, Fillr.BROWSER_TYPE.WEB_KIT, fillrBrowserProperties);
 

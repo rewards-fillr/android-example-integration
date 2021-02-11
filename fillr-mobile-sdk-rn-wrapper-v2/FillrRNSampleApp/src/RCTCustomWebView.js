@@ -24,7 +24,7 @@ export default class CustomWebView extends Component {
       <WebView
         {...this.props}
         nativeConfig={{
-          component: RCTCustomWebView,
+          component: RNCCustomWebView,
            props: {
              finalUrl: this.props.finalUrl,
              onNavigationCompleted: this._onNavigationCompleted,
@@ -36,8 +36,8 @@ export default class CustomWebView extends Component {
   }
 }
 
-const RCTCustomWebView = requireNativeComponent(
-  'RCTCustomWebView',
+const RNCCustomWebView = requireNativeComponent(
+  'RNCCustomWebView',
   CustomWebView,
   WebView.extraNativeComponentConfig
 );

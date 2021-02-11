@@ -9,7 +9,7 @@ import com.facebook.react.uimanager.annotations.ReactProp;
 import com.fillr.browsersdk.Fillr;
 import com.fillr.browsersdk.model.FillrWebViewClient;
 
-public class FillrWebviewSimpleView extends SimpleViewManager<WebView> {
+public class FillrWebViewManager extends SimpleViewManager<WebView> {
 
     public static final String REACT_CLASS = "FillrWebView";
 
