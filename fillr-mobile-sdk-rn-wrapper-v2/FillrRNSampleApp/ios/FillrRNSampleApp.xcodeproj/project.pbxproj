@@ -14,10 +14,10 @@
 		2131069625D37CFD00308888 /* VERSION in Resources */ = {isa = PBXBuildFile; fileRef = 2131069325D37CFD00308888 /* VERSION */; };
 		2131069725D37CFD00308888 /* libFillrSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2131069425D37CFD00308888 /* libFillrSDK.a */; };
 		2131069825D37CFD00308888 /* FillrSDKBundle.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 2131069525D37CFD00308888 /* FillrSDKBundle.bundle */; };
-		213106A325D37D8E00308888 /* FillrCustomWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2131069D25D37D8E00308888 /* FillrCustomWebView.m */; };
 		213106A425D37D8E00308888 /* FillrCustomWebViewManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 213106A025D37D8E00308888 /* FillrCustomWebViewManager.m */; };
 		213106AC25D37DFE00308888 /* FillrHeadlessModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 213106AA25D37DFE00308888 /* FillrHeadlessModule.m */; };
 		21A72A2148CB8F8FB41C1E14 /* libPods-FillrRNSampleApp-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3485BFAD0BE3E627CD6AF196 /* libPods-FillrRNSampleApp-tvOSTests.a */; };
+		21DBF08D25D9588000B07140 /* FillrCustomWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = 21DBF08C25D9588000B07140 /* FillrCustomWebView.m */; };
 		2D02E4BC1E0B4A80006451C7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		2D02E4BD1E0B4A84006451C7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		2D02E4BF1E0B4AB3006451C7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
@@ -68,12 +68,12 @@
 		2131069325D37CFD00308888 /* VERSION */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = VERSION; sourceTree = "<group>"; };
 		2131069425D37CFD00308888 /* libFillrSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libFillrSDK.a; sourceTree = "<group>"; };
 		2131069525D37CFD00308888 /* FillrSDKBundle.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = FillrSDKBundle.bundle; sourceTree = "<group>"; };
-		2131069D25D37D8E00308888 /* FillrCustomWebView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FillrCustomWebView.m; sourceTree = "<group>"; };
 		2131069E25D37D8E00308888 /* FillrCustomWebViewManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FillrCustomWebViewManager.h; sourceTree = "<group>"; };
-		2131069F25D37D8E00308888 /* FillrCustomWebView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FillrCustomWebView.h; sourceTree = "<group>"; };
 		213106A025D37D8E00308888 /* FillrCustomWebViewManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FillrCustomWebViewManager.m; sourceTree = "<group>"; };
 		213106AA25D37DFE00308888 /* FillrHeadlessModule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FillrHeadlessModule.m; sourceTree = "<group>"; };
 		213106AB25D37DFE00308888 /* FillrHeadlessModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FillrHeadlessModule.h; sourceTree = "<group>"; };
+		21DBF08B25D9588000B07140 /* FillrCustomWebView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FillrCustomWebView.h; sourceTree = "<group>"; };
+		21DBF08C25D9588000B07140 /* FillrCustomWebView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FillrCustomWebView.m; sourceTree = "<group>"; };
 		2D02E47B1E0B4A5D006451C7 /* FillrRNSampleApp-tvOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "FillrRNSampleApp-tvOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D02E4901E0B4A5D006451C7 /* FillrRNSampleApp-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "FillrRNSampleApp-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3485BFAD0BE3E627CD6AF196 /* libPods-FillrRNSampleApp-tvOSTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-FillrRNSampleApp-tvOSTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -152,8 +152,8 @@
 				13B07FB01A68108700A75B9A /* AppDelegate.m */,
 				213106AB25D37DFE00308888 /* FillrHeadlessModule.h */,
 				213106AA25D37DFE00308888 /* FillrHeadlessModule.m */,
-				2131069F25D37D8E00308888 /* FillrCustomWebView.h */,
-				2131069D25D37D8E00308888 /* FillrCustomWebView.m */,
+				21DBF08B25D9588000B07140 /* FillrCustomWebView.h */,
+				21DBF08C25D9588000B07140 /* FillrCustomWebView.m */,
 				2131069E25D37D8E00308888 /* FillrCustomWebViewManager.h */,
 				213106A025D37D8E00308888 /* FillrCustomWebViewManager.m */,
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
@@ -633,8 +633,8 @@
 				213106AC25D37DFE00308888 /* FillrHeadlessModule.m in Sources */,
 				13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */,
 				13B07FC11A68108700A75B9A /* main.m in Sources */,
+				21DBF08D25D9588000B07140 /* FillrCustomWebView.m in Sources */,
 				213106A425D37D8E00308888 /* FillrCustomWebViewManager.m in Sources */,
-				213106A325D37D8E00308888 /* FillrCustomWebView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

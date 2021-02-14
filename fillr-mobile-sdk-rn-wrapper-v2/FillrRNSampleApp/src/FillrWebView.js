@@ -1,38 +1,11 @@
-import React, { Component } from 'react';
-import { requireNativeComponent, NativeModules } from 'react-native';
-import { WebView } from "react-native-webview";
-const { FillrCustomWebViewManager } = NativeModules; 
+import PropTypes from 'prop-types';
+import { requireNativeComponent, ViewPropTypes } from 'react-native';
 
-export default class FillrWebView extends Component {
-  static defaultProps = {
-    finalUrl: 'about:blank',
-  };
-
-  _onNavigationCompleted = (event) => {
-    const { onNavigationCompleted } = this.props;
-    onNavigationCompleted && onNavigationCompleted(event);
-  }
-
-  render() {
-    return (
-      <WebView
-        {...this.props}
-        nativeConfig={{
-          component: FillrCustomWebView,
-           props: {
-              url: this.props.finalUrl,
-             finalUrl: this.props.finalUrl,
-             onNavigationCompleted: this._onNavigationCompleted,
-           },
-          viewManager: FillrCustomWebViewManager
-        }}
-      />
-    );
+var viewProps = {
+  name: 'FillrCustomWebView',
+  propTypes: {
+    url: PropTypes.string,
   }
 }
 
-const FillrCustomWebView = requireNativeComponent(
-  'FillrCustomWebView',
-  FillrWebView,
-  WebView.extraNativeComponentConfig
-);
+module.exports = requireNativeComponent('FillrCustomWebView', viewProps);
