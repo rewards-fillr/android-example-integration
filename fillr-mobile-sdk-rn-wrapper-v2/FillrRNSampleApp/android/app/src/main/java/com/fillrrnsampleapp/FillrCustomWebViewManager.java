@@ -12,13 +12,12 @@ import com.facebook.react.uimanager.SimpleViewManager;
 import com.facebook.react.uimanager.ThemedReactContext;
 import com.facebook.react.uimanager.annotations.ReactProp;
 import com.fillr.browsersdk.Fillr;
+import com.fillr.browsersdk.model.FillrWebView;
 import com.fillr.browsersdk.model.FillrWebViewClient;
 
 public class FillrCustomWebViewManager extends SimpleViewManager<WebView> {
 
     public static final String REACT_CLASS = "FillrCustomWebView";
-
-    static WebView webView;
 
     @Override
     public String getName() {
@@ -27,7 +26,7 @@ public class FillrCustomWebViewManager extends SimpleViewManager<WebView> {
 
     @Override
     protected WebView createViewInstance(ThemedReactContext reactContext) {
-        webView = new WebView(reactContext);
+        WebView webView = new WebView(reactContext);
         Fillr.getInstance().trackWebView(webView);
         webView.setWebViewClient(new FillrWebViewClient());
         Log.d(FillrHeadlessModule.TAG, "fillr Tracked: ");
@@ -42,15 +41,14 @@ public class FillrCustomWebViewManager extends SimpleViewManager<WebView> {
     @ReactMethod
     @UiThread
     public void triggerFill() {
-        if (webView != null) {
-            Handler mainHandler = new Handler(Looper.getMainLooper());
-            Runnable runnable = new Runnable() {
-                @Override
-                public void run() {
-                    Fillr.getInstance().triggerFill(webView);
-                }
-            };
-            mainHandler.post(runnable);
+        Fillr fillr = Fillr.getInstance();
+        if (fillr != null) {
+            FillrWebView fillrWebView = fillr.getFillrWebView();
+            if (fillrWebView != null && fillrWebView.getWebView() != null) {
+                Handler mainHandler = new Handler(Looper.getMainLooper());
+                Runnable runnable = () -> Fillr.getInstance().triggerFill(fillrWebView.getWebView());
+                mainHandler.post(runnable);
+            }
         }
     }
 }
