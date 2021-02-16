@@ -25,8 +25,8 @@
 @implementation FillrCustomWebViewManager
 
 RCT_EXPORT_MODULE(FillrCustomWebView)
-
 RCT_EXPORT_VIEW_PROPERTY(url, NSString)
+RCT_EXTERN_METHOD(triggerFill)
 
 - (UIView *)view
 {
@@ -37,6 +37,15 @@ RCT_EXPORT_VIEW_PROPERTY(url, NSString)
   [fillr trackWebview:webView];
   
   return webView;
+}
+
+- (void)triggerFill {
+  dispatch_async(dispatch_get_main_queue(), ^{
+    if (self->webView) {
+      Fillr *fillr = [Fillr sharedInstance];
+      [fillr triggerFill:self->webView];
+    }
+  });
 }
 
 - (void)webView:(WKWebView *)webView decidePolicyForNavigationAction:(WKNavigationAction *)navigationAction decisionHandler:(void (^)(WKNavigationActionPolicy))decisionHandler {
