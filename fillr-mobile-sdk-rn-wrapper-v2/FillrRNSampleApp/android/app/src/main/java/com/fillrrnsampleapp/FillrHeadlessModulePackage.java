@@ -20,6 +20,7 @@ public class FillrHeadlessModulePackage implements ReactPackage {
     public List<NativeModule> createNativeModules(ReactApplicationContext reactContext) {
         List<NativeModule> modules = new ArrayList<>();
         modules.add(new FillrHeadlessModule(reactContext));
+        modules.add(new FillrCustomWebViewManager());
         return modules;
     }
 
@@ -31,7 +32,7 @@ public class FillrHeadlessModulePackage implements ReactPackage {
     @Override
     public List<ViewManager> createViewManagers(ReactApplicationContext reactContext) {
         return Collections.<ViewManager>singletonList(
-                new FillrWebviewSimpleView()
+                new FillrCustomWebViewManager()
         );
     }
 }

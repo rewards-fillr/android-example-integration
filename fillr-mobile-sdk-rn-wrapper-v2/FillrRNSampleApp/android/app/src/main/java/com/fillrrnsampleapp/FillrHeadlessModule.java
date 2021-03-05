@@ -9,6 +9,7 @@ import android.widget.Toast;
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
+import com.facebook.react.bridge.ReadableMap;
 import com.fillr.FillrApplication;
 import com.fillr.browsersdk.Fillr;
 import com.fillr.browsersdk.FillrConfig;
@@ -27,6 +28,8 @@ import java.util.List;
 public class FillrHeadlessModule extends ReactContextBaseJavaModule {
 
     public static final String TAG = "FillrHeadlessMode";
+
+    private HashMap<String, String> profileData = null;
 
     public FillrHeadlessModule(ReactApplicationContext reactContext) {
         super(reactContext);
@@ -61,14 +64,30 @@ public class FillrHeadlessModule extends ReactContextBaseJavaModule {
                 @Override
                 public void onFormDetected(FillrWebView webview, FillrMapping fillrMapping) {
                     Log.d(TAG, "form detected: ");
-                    List<String> fields = fillrMapping.getFields();
-                    HashMap<String, String> profileData = assignMockProfileData(fields);
-                    fillrMapping.setProfileData(profileData);
-                    Fillr.getInstance().performAutofillOnWebView(webview, fillrMapping);
+                    if (profileData != null) {
+                        fillrMapping.setProfileData(profileData);
+                        Fillr.getInstance().performAutofillOnWebView(webview, fillrMapping);
+                    }
                 }
             });
             Log.d(TAG, "initializeFillr: ");
         }
+    }
+
+    @ReactMethod
+    public void updateProfilePayload(ReadableMap profilePayload) {
+        if (profilePayload == null) {
+            return;
+        }
+
+        HashMap<String, Object> profileObjectMap = profilePayload.toHashMap();
+        HashMap<String, String> profileStringMap = new HashMap<String,String>();
+        for (HashMap.Entry<String, Object> entry : profileObjectMap.entrySet()) {
+            if (entry.getValue() instanceof String){
+                profileStringMap.put(entry.getKey(), (String) entry.getValue());
+            }
+        }
+        profileData = profileStringMap;
     }
 
     @ReactMethod
