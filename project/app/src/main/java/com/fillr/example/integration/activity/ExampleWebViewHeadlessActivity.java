@@ -80,6 +80,17 @@ public class ExampleWebViewHeadlessActivity extends AppCompatActivity {
                 }
             }
         });
+
+        Fillr.getInstance().setFormEventListener(new Fillr.FormEventListener() {
+            @Override
+            public void onFieldFocused() {
+                //notifies this listener when the user taps into a field
+            }
+        });
+
+        //used to trigger a fill when on a page; can be part of a CTA
+        //Fillr.getInstance().triggerFill(webView);
+
         webView.loadUrl("https://www.fillr.com/test");
     }
 
@@ -146,6 +157,8 @@ public class ExampleWebViewHeadlessActivity extends AppCompatActivity {
         fillr.trackWebView(webView, FillrWebView.OPTIONS_NONE);
         //Optional config track method
         //fillr.trackWebView(webView,  FillrWebView.OPTIONS_TLS_PROXY);
+        //when using the above configuration; in order to completely stop the proxy mode you can use
+        //fillr.untrackWebView(webView);
     }
 
     /**
