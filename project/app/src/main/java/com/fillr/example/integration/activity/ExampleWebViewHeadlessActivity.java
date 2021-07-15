@@ -3,6 +3,7 @@ package com.fillr.example.integration.activity;
 import android.content.DialogInterface;
 import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.view.View;
 import android.webkit.WebView;
 import android.webkit.WebResourceRequest;
 import android.webkit.WebResourceResponse;
@@ -18,9 +19,11 @@ import com.fillr.browsersdk.model.FillrWebView;
 import com.fillr.browsersdk.model.FillrWebViewClient;
 import com.fillr.browsersdk.model.FillrWidgetAuth;
 import com.fillr.example.integration.R;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
 import java.util.HashMap;
 import java.util.List;
 
@@ -32,18 +35,21 @@ public class ExampleWebViewHeadlessActivity extends AppCompatActivity {
 
     //TODO:  place your Fillr development key and secret values here
     //       you can acquire a key/secret pair at product@fillr.com
-    private static final String FILLR_KEY = "YOUR_DEVELOPER_KEY";
+    private static final String FILLR_KEY = "YOUR_FILLR_DEV_KEY";
     private static final String FILLR_SECRET = "YOUR_FILLR_SECRET_KEY";
     private static final String FILLR_CART_SCRAPER_USERNAME = "YOUR_CART_SCRAPER_USERNAME";
     private static final String FILLR_CART_SCRAPER_PASSWORD = "YOUR_CART_SCRAPER_PASSWORD";
+    private static final String FILLR_URL = "https://www.fillr.com/test";
 
     private Fillr fillr;
+    private WebView webView;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_example_headless_webview);
-        WebView webView = findViewById(R.id.webview);
+        webView = findViewById(R.id.webview);
         webView.getSettings().setSupportZoom(false);
         setupFillr(webView);
 
@@ -90,13 +96,10 @@ public class ExampleWebViewHeadlessActivity extends AppCompatActivity {
 
         //used to trigger a fill when on a page; can be part of a CTA
         //Fillr.getInstance().triggerFill(webView);
-
-        webView.loadUrl("https://www.fillr.com/test");
+        webView.loadUrl(FILLR_URL);
     }
 
-
     private class AffiliateWebViewClient extends FillrWebViewClient {
-
         @Override
         public void onPageStarted(WebView view, String url, Bitmap favicon) {
             super.onPageStarted(view, url, favicon);
@@ -114,7 +117,6 @@ public class ExampleWebViewHeadlessActivity extends AppCompatActivity {
             }
             return super.shouldInterceptRequest(view, request);
         }
-
     }
 
     /**
@@ -152,13 +154,36 @@ public class ExampleWebViewHeadlessActivity extends AppCompatActivity {
 
         //Step 5 - Setup Affiliate Url Redirection (optional feature)
         config.setAffiliateEnabled(true);
+    }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
         //Step 6. Track the WebView - This can be called as many times as needed. The WebViews are stored as weak references.
-        fillr.trackWebView(webView, FillrWebView.OPTIONS_NONE);
-        //Optional config track method
-        //fillr.trackWebView(webView,  FillrWebView.OPTIONS_TLS_PROXY);
-        //when using the above configuration; in order to completely stop the proxy mode you can use
-        //fillr.untrackWebView(webView);
+        if (fillr.websiteRequiresProxy(FILLR_URL)) {
+            //Optional config track method
+            //fillr.trackWebView(webView,  FillrWebView.OPTIONS_TLS_PROXY);
+            //when using the above configuration; in order to completely stop the proxy mode you can use
+            //fillr.untrackWebView(webView);
+            fillr.trackWebView(webView, FillrWebView.OPTIONS_TLS_PROXY);
+        } else {
+            fillr.trackWebView(webView, FillrWebView.OPTIONS_NONE);
+        }
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        try {
+            fillr.untrackWebView(webView);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
     }
 
     /**
@@ -258,7 +283,7 @@ public class ExampleWebViewHeadlessActivity extends AppCompatActivity {
         profileData.put("AddressDetails.BillingAddress.PostalCode", "3166");
         profileData.put("AddressDetails.BillingAddress.AdministrativeArea", "Monash");
 
-        profileData.put("AddressDetails.PostalAddress.AddressLine1", "501 Blackburn Road");
+        profileData.put("AddressDetails.PostalAddress.AddressLine1", "503 Blackburn Road");
         profileData.put("AddressDetails.PostalAddress.AddressLine2", "This is addy 2");
         profileData.put("AddressDetails.PostalAddress.PostalCode", "3149");
         profileData.put("AddressDetails.PostalAddress.Suburb", "Mount Waverley");
