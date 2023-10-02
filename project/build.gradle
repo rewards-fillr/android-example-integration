@@ -1,6 +1,7 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 
 buildscript {
+    ext.kotlinVersion = '1.8.10'
 
     repositories {
         google()
@@ -18,7 +19,15 @@ buildscript {
 allprojects {
     repositories {
         google()
-        jcenter()
+        mavenLocal()
+        mavenCentral()
+        maven {
+            url "https://fillr.jfrog.io/artifactory/fillr-android-sdk/"
+            credentials {
+                username = "USERNAME" // Contact Fillr for username and password
+                password = "PASSWORD"
+            }
+        }
     }
 }
 
