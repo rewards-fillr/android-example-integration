@@ -2,14 +2,14 @@ package com.fillr.example.integration.activity;
 
 import android.content.DialogInterface;
 import android.graphics.Bitmap;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
+import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebResourceRequest;
 import android.webkit.WebResourceResponse;
-
 import androidx.appcompat.app.AppCompatActivity;
-
 import com.fillr.browsersdk.Fillr;
 import com.fillr.browsersdk.FillrConfig;
 import com.fillr.browsersdk.model.FillrBrowserProperties;
@@ -19,11 +19,9 @@ import com.fillr.browsersdk.model.FillrWebView;
 import com.fillr.browsersdk.model.FillrWebViewClient;
 import com.fillr.browsersdk.model.FillrWidgetAuth;
 import com.fillr.example.integration.R;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import java.util.HashMap;
 import java.util.List;
 
@@ -44,13 +42,29 @@ public class ExampleWebViewHeadlessActivity extends AppCompatActivity {
     private Fillr fillr;
     private WebView webView;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_example_headless_webview);
         webView = findViewById(R.id.webview);
         webView.getSettings().setSupportZoom(false);
+        webView.getSettings().setJavaScriptEnabled(true);
+        webView.getSettings().setDomStorageEnabled(true);
+        webView.getSettings().setAppCacheEnabled(true);
+        webView.getSettings().setCacheMode(WebSettings.LOAD_DEFAULT);
+        webView.getSettings().setBuiltInZoomControls(true);
+        webView.getSettings().setDisplayZoomControls(false); // Hide the default zoom controls
+        webView.getSettings().setUseWideViewPort(true);
+        webView.getSettings().setLoadWithOverviewMode(true);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            webView.getSettings().setMixedContentMode(WebSettings.MIXED_CONTENT_ALWAYS_ALLOW);
+        }
+        webView.getSettings().setGeolocationEnabled(true);
+        webView.getSettings().setAllowFileAccess(true);
+        webView.getSettings().setAllowContentAccess(true);
+        webView.setLayerType(View.LAYER_TYPE_HARDWARE, null);
+        webView.getSettings().setDatabaseEnabled(true);
+
         setupFillr(webView);
 
         //if cart scraping has been enabled - cart scraper credentials have to be set in the init method
@@ -103,7 +117,7 @@ public class ExampleWebViewHeadlessActivity extends AppCompatActivity {
         @Override
         public void onPageStarted(WebView view, String url, Bitmap favicon) {
             super.onPageStarted(view, url, favicon);
-            boolean isIntegratedMerchant = false; //... check webView.url against zip merchants list
+            boolean isIntegratedMerchant = true; //... check webView.url against zip merchants list
             if (!isIntegratedMerchant) {
                 Fillr.getInstance().processAffiliateForURL(url, view);
             }
@@ -111,7 +125,7 @@ public class ExampleWebViewHeadlessActivity extends AppCompatActivity {
 
         @Override
         public WebResourceResponse shouldInterceptRequest(WebView view, WebResourceRequest request) {
-            boolean isIntegratedMerchant = false; //... check webView.url against zip merchants list
+            boolean isIntegratedMerchant = true; //... check webView.url against zip merchants list
             if (!isIntegratedMerchant) {
                 Fillr.getInstance().processAffiliateForRequest(request, view);
             }
@@ -153,7 +167,7 @@ public class ExampleWebViewHeadlessActivity extends AppCompatActivity {
         fillr.profileDataListener(profileDataListener);
 
         //Step 5 - Setup Affiliate Url Redirection (optional feature)
-        config.setAffiliateEnabled(true);
+        config.setAffiliateEnabled(false);
     }
 
     @Override
