@@ -65,7 +65,6 @@ public class ExampleWebViewHeadlessActivity extends AppCompatActivity {
         webView.getSettings().setDatabaseEnabled(true);
 
         webView.getSettings().setAllowContentAccess(true);
-        webView.getSettings().setDomStorageEnabled(true);
         webView.getSettings().setAllowFileAccess(true);
 
         setupFillr(webView);
