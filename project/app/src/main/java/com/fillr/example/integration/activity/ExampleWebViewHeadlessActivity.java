@@ -50,7 +50,6 @@ public class ExampleWebViewHeadlessActivity extends AppCompatActivity {
         webView.getSettings().setSupportZoom(false);
         webView.getSettings().setJavaScriptEnabled(true);
         webView.getSettings().setDomStorageEnabled(true);
-        webView.getSettings().setAppCacheEnabled(true);
         webView.getSettings().setCacheMode(WebSettings.LOAD_DEFAULT);
         webView.getSettings().setBuiltInZoomControls(true);
         webView.getSettings().setDisplayZoomControls(false); // Hide the default zoom controls
@@ -64,6 +63,10 @@ public class ExampleWebViewHeadlessActivity extends AppCompatActivity {
         webView.getSettings().setAllowContentAccess(true);
         webView.setLayerType(View.LAYER_TYPE_HARDWARE, null);
         webView.getSettings().setDatabaseEnabled(true);
+
+        webView.getSettings().setAllowContentAccess(true);
+        webView.getSettings().setDomStorageEnabled(true);
+        webView.getSettings().setAllowFileAccess(true);
 
         setupFillr(webView);
 
